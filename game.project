@@ -1,0 +1,23 @@
+[bootstrap]
+main_collection = /example/main.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 1280
+height = 960
+
+[project]
+title = defold-gamescore
+publisher = Megalanthus
+developer = Megalanthus
+
+[library]
+include_dirs = gamescore
+
+[gamescore]
+id = your id
+token = your token
+description = There are not enough words to describe the awesomeness of the game
+image = /img/ogimage.png

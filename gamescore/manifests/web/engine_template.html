@@ -1,0 +1,36 @@
+<html>
+<head>
+    {{#project.title}}
+    <meta name="og:title" content="{{project.title}}">
+    {{/project.title}}
+    {{#gamescore.description}}
+    <meta name="description" content="{{gamescore.description}}">
+    <meta name="og:description" content="{{gamescore.description}}">
+    {{/gamescore.description}}
+    {{#gamescore.image}}
+    <meta name="og:image" content="{{gamescore.image}}">
+    {{/gamescore.image}}
+    <script async
+            src="https://gs.eponesh.com/sdk/game-score.js?projectId={{gamescore.id}}&publicToken={{gamescore.token}}&callback=onGSInit"></script>
+    <script type="text/javascript">
+        window.onGSInit = (gs) => {
+            function init(gs, result) {
+                if (window.GameScoreLib !== undefined && window.GameScoreLib.init !== undefined) {
+                    window.GameScoreLib.init(gs, result);
+                } else {
+                    window.GameScoreInstance = gs;
+                    window.GameScoreInit = result;
+                }
+            }
+
+            gs.player.ready.then(
+                function () {
+                    init(gs, true);
+                }).catch(
+                function () {
+                    init(gs, false);
+                });
+        }
+    </script>
+</head>
+</html>

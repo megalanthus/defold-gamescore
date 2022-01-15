@@ -1,0 +1,587 @@
+local gamescore = require("gamescore.gamescore")
+local mock_api = require("gamescore.mock_api")
+
+local function table_to_string(tbl, space_count)
+    if space_count == nil then
+        space_count = 0
+    end
+    local result = ""
+    for key, value in pairs(tbl) do
+        local space = ""
+        if space_count > 0 then
+            space = string.rep(" ", space_count)
+        end
+        if type(value) == "table" then
+            result = result .. space .. key .. ":\n" .. table_to_string(value, space_count + 2)
+        else
+            result = result .. space .. key .. ": " .. tostring(value) .. "\n"
+        end
+    end
+    return result
+end
+
+local function to_log(str)
+    if type(str) == "table" then
+        str = table_to_string(str)
+    end
+    gui.set_text(gui.get_node("label_log"), str)
+end
+
+local function on_init()
+    gamescore.init(function(success)
+        gui.set_text(gui.get_node("label_init"), "init: " .. tostring(success))
+    end)
+end
+
+local function on_get_language()
+    to_log("current language: " .. gamescore.language())
+end
+
+local function set_language_ru()
+    gamescore.change_language("ru")
+    to_log("set language `ru`")
+end
+
+local function set_language_en()
+    gamescore.change_language("en")
+    to_log("set language `en`")
+end
+
+local function get_app_info()
+    to_log(gamescore.app())
+end
+
+local function get_platform_info()
+    to_log(gamescore.platform())
+end
+
+local function get_ads_info()
+    to_log(gamescore.ads())
+end
+
+local function ads_show_fullscreen()
+    gamescore.ads_show_fullscreen(function(result)
+        to_log("show fullscreen: " .. tostring(result))
+    end)
+end
+
+local function ads_show_preloader()
+    gamescore.ads_show_preloader(function(result)
+        to_log("show preloader: " .. tostring(result))
+    end)
+end
+
+local function ads_show_rewarded()
+    gamescore.ads_show_rewarded_video(function(result)
+        to_log("show rewarded: " .. tostring(result))
+    end)
+end
+
+local function ads_show_sticky()
+    gamescore.ads_show_sticky(function(result)
+        to_log("show sticky: " .. tostring(result))
+    end)
+end
+
+local function ads_refresh_sticky()
+    gamescore.ads_refresh_sticky(function(result)
+        to_log("refresh sticky: " .. tostring(result))
+    end)
+end
+
+local function ads_close_sticky()
+    gamescore.ads_close_sticky(function()
+        to_log("close sticky")
+    end)
+end
+
+local function player()
+    to_log(gamescore.player())
+end
+
+local function player_sync()
+    gamescore.player_sync(nil, function()
+        to_log("sync player")
+    end)
+end
+
+local function player_sync_override()
+    gamescore.player_sync({ override = true }, function()
+        to_log("sync player with override")
+    end)
+end
+
+local function player_load()
+    gamescore.player_load(function()
+        to_log("load player")
+    end)
+end
+
+local function player_login()
+    gamescore.player_login(function(result)
+        to_log("login player: " .. tostring(result))
+    end)
+end
+
+local function player_fetch_fields()
+    gamescore.player_fetch_fields(function()
+        to_log("fetch fields player")
+    end)
+end
+
+local function player_get()
+    to_log("player get: " .. gamescore.player_get("score"))
+end
+
+local function player_set()
+    gamescore.player_set("score", 100)
+    to_log("player set score 100")
+end
+
+local function player_add()
+    gamescore.player_add("score", 10)
+    to_log("player add score 10")
+end
+
+local function player_toggle()
+    gamescore.player_toggle("score")
+    to_log("player toggle score")
+end
+
+local function player_has()
+    to_log("player has score: " .. tostring(gamescore.player_has("score")))
+end
+
+local function player_to_json()
+    pprint(gamescore.player_to_json())
+    to_log("player to json:\n" .. table_to_string(gamescore.player_to_json()))
+end
+
+local function player_from_json()
+    local player = { name = "Name player", score = 152 }
+    gamescore.player_from_json(player)
+    to_log("player from json:\n" .. table_to_string(player))
+end
+
+local function player_reset()
+    gamescore.player_reset()
+    to_log("player reset")
+end
+
+local function player_remove()
+    gamescore.player_remove()
+    to_log("player remove")
+end
+
+local function player_get_field()
+    to_log("player get field:\n" .. table_to_string(gamescore.player_get_field("score")))
+end
+
+local function player_get_field_name()
+    to_log("player get field name: " .. gamescore.player_get_field_name("score"))
+end
+
+local function player_get_field_variant_name()
+    to_log("player get field variant name: " .. gamescore.player_get_field_variant_name("progress", "progress_value"))
+end
+
+local function leaderboard_open()
+    gamescore.leaderboard_open()
+    to_log("Leaderboard open")
+end
+
+local function leaderboard_open_param()
+    local param = {
+        limit = 5,
+        order = "DESC",
+        includeFields = { "level" },
+        displayFields = { "score", "level" },
+        withMe = "last"
+    }
+    gamescore.leaderboard_open(param)
+    to_log("Leaderboard open with parameters:\n" .. table_to_string(param))
+end
+
+local function leaderboard_fetch()
+    gamescore.leaderboard_fetch(nil, function(leaders)
+        to_log("Leaderboard fetch:\n" .. table_to_string(leaders))
+    end)
+end
+
+local function leaderboard_fetch_param()
+    local param = {
+        limit = 3,
+        order = "ASC",
+        includeFields = { "level" },
+        displayFields = { "score", "level" },
+        withMe = "last"
+    }
+    gamescore.leaderboard_fetch(param, function(leaders)
+        to_log("Leaderboard fetch with parameters:\n" .. table_to_string(leaders))
+    end)
+end
+
+local function leaderboard_fetch_player_rating()
+    gamescore.leaderboard_fetch_player_rating(nil, function(leaders)
+        to_log("Leaderboard fetch rating:\n" .. table_to_string(leaders))
+    end)
+end
+
+local function leaderboard_fetch_player_rating_param()
+    local param = {
+        includeFields = { "level" },
+    }
+    gamescore.leaderboard_fetch_player_rating(param, function(leaders)
+        to_log("Leaderboard fetch rating with parameters:\n" .. table_to_string(leaders))
+    end)
+end
+
+local function achievements_unlock()
+    gamescore.achievements_unlock("my_achiv", function(result)
+        to_log("Achievements unlock:\n" .. table_to_string(result))
+    end)
+end
+
+local function achievements_open()
+    gamescore.achievements_open(function()
+        to_log("Achievements open")
+    end)
+end
+
+local function achievements_fetch()
+    gamescore.achievements_fetch(function(achievements)
+        to_log("Achievements fetch:\n" .. table_to_string(achievements))
+    end)
+end
+
+local function payments_is_available()
+    to_log("Payments is available: " .. tostring(gamescore.payments_is_available()))
+end
+
+local function payments_purchase()
+    gamescore.payments_purchase("my_product", function(result)
+        to_log("Payments purchase:\n" .. table_to_string(result))
+    end)
+end
+
+local function payments_consume()
+    gamescore.payments_consume("my_product", function(result)
+        to_log("Payments consume:\n" .. table_to_string(result))
+    end)
+end
+
+local function payments_has()
+    to_log("Payments has: " .. tostring(gamescore.payments_has("my_product")))
+end
+
+local function payments_fetch_products()
+    gamescore.payments_fetch_products(function(result)
+        to_log("Payments fetch products:\n" .. table_to_string(result))
+    end)
+end
+
+local function socials()
+    to_log("Socials:\n" .. table_to_string(gamescore.socials()))
+end
+
+local function socials_share()
+    to_log("Socials share")
+    gamescore.socials_share()
+end
+
+local function socials_share_param()
+    local parameters = {
+        text = "I have a new achievement!",
+        image = "https://gs.eponesh.com/img/ogimage.png",
+        url = "https://gs.eponesh.com"
+    }
+    to_log("Socials share\n" .. table_to_string(parameters))
+    gamescore.socials_share(parameters)
+end
+
+local function socials_post()
+    to_log("Socials post")
+    gamescore.socials_post()
+end
+
+local function socials_post_param()
+    local parameters = {
+        text = "I have a new achievement!",
+        image = "https://gs.eponesh.com/img/ogimage.png",
+        url = "https://gs.eponesh.com"
+    }
+    to_log("Socials post\n" .. table_to_string(parameters))
+    gamescore.socials_post(parameters)
+end
+
+local function socials_invite()
+    to_log("Socials invite")
+    gamescore.socials_invite()
+end
+
+local function socials_invite_param()
+    local parameters = {
+        text = "I invite you to gamescore!",
+    }
+    to_log("Socials invite\n" .. table_to_string(parameters))
+    gamescore.socials_invite(parameters)
+end
+
+local function socials_join()
+    to_log("Socials join community")
+    gamescore.socials_join_community()
+end
+
+local function games_collections_open()
+    gamescore.games_collections_open("ALL", function()
+        to_log("Games collections open")
+    end)
+end
+
+local function games_collections_fetch()
+    gamescore.games_collections_fetch("ALL", function(result)
+        to_log("Games collections fetch: " .. table_to_string(result))
+    end)
+end
+
+local function analytics_hit()
+    local url = "/my-page/example?query=1"
+    to_log("Analytics hit: " .. url)
+    gamescore.analytics_hit(url)
+end
+
+local function analytics_goal()
+    local event = "LEVEL_START"
+    local level = 15
+    to_log("Analytics goal: " .. event .. " " .. level)
+    gamescore.analytics_goal(event, level)
+end
+
+local function fullscreen_open()
+    to_log("Fullscreen open")
+    gamescore.fullscreen_open()
+end
+
+local function fullscreen_close()
+    to_log("Fullscreen close")
+    gamescore.fullscreen_close()
+end
+
+local function fullscreen_toggle()
+    to_log("Fullscreen toggle")
+    gamescore.fullscreen_toggle()
+end
+
+local buttons = {
+    ["init/button"] = on_init,
+    ["get_language/button"] = on_get_language,
+    ["set_language_ru/button"] = set_language_ru,
+    ["set_language_en/button"] = set_language_en,
+    ["get_app_info/button"] = get_app_info,
+    ["get_platform_info/button"] = get_platform_info,
+    ["get_ads_info/button"] = get_ads_info,
+    ["ads_show_fullscreen/button"] = ads_show_fullscreen,
+    ["ads_show_preloader/button"] = ads_show_preloader,
+    ["ads_show_rewarded/button"] = ads_show_rewarded,
+    ["ads_show_sticky/button"] = ads_show_sticky,
+    ["ads_refresh_sticky/button"] = ads_refresh_sticky,
+    ["ads_close_sticky/button"] = ads_close_sticky,
+    ["player/button"] = player,
+    ["player_sync/button"] = player_sync,
+    ["player_sync_override/button"] = player_sync_override,
+    ["player_load/button"] = player_load,
+    ["player_login/button"] = player_login,
+    ["player_fetch_fields/button"] = player_fetch_fields,
+    ["player_get/button"] = player_get,
+    ["player_set/button"] = player_set,
+    ["player_add/button"] = player_add,
+    ["player_toggle/button"] = player_toggle,
+    ["player_has/button"] = player_has,
+    ["player_to_json/button"] = player_to_json,
+    ["player_from_json/button"] = player_from_json,
+    ["player_reset/button"] = player_reset,
+    ["player_remove/button"] = player_remove,
+    ["player_get_field/button"] = player_get_field,
+    ["player_get_field_name/button"] = player_get_field_name,
+    ["player_get_field_variant_name/button"] = player_get_field_variant_name,
+    ["leaderboard_open/button"] = leaderboard_open,
+    ["leaderboard_open_param/button"] = leaderboard_open_param,
+    ["leaderboard_fetch/button"] = leaderboard_fetch,
+    ["leaderboard_fetch_param/button"] = leaderboard_fetch_param,
+    ["leaderboard_fetch_player_rating/button"] = leaderboard_fetch_player_rating,
+    ["leaderboard_fetch_player_rating_param/button"] = leaderboard_fetch_player_rating_param,
+    ["achievements_unlock/button"] = achievements_unlock,
+    ["achievements_open/button"] = achievements_open,
+    ["achievements_fetch/button"] = achievements_fetch,
+    ["payments_is_available/button"] = payments_is_available,
+    ["payments_purchase/button"] = payments_purchase,
+    ["payments_consume/button"] = payments_consume,
+    ["payments_has/button"] = payments_has,
+    ["payments_fetch_products/button"] = payments_fetch_products,
+    ["socials/button"] = socials,
+    ["socials_share/button"] = socials_share,
+    ["socials_share_param/button"] = socials_share_param,
+    ["socials_post/button"] = socials_post,
+    ["socials_post_param/button"] = socials_post_param,
+    ["socials_invite/button"] = socials_invite,
+    ["socials_invite_param/button"] = socials_invite_param,
+    ["socials_join/button"] = socials_join,
+    ["games_collections_open/button"] = games_collections_open,
+    ["games_collections_fetch/button"] = games_collections_fetch,
+    ["analytics_hit/button"] = analytics_hit,
+    ["analytics_goal/button"] = analytics_goal,
+    ["fullscreen_open/button"] = fullscreen_open,
+    ["fullscreen_close/button"] = fullscreen_close,
+    ["fullscreen_toggle/button"] = fullscreen_toggle,
+}
+
+function init(self)
+    msg.post(".", "acquire_input_focus")
+    gamescore.callbacks.ads_start = function()
+        pprint("start ads")
+    end
+    gamescore.callbacks.ads_close = function(success)
+        pprint("close ads:", success)
+    end
+
+    gamescore.callbacks.ads_fullscreen_start = function()
+        pprint("start fullscreen ads")
+    end
+    gamescore.callbacks.ads_fullscreen_close = function(success)
+        pprint("close fullscreen ads:", success)
+    end
+
+    gamescore.callbacks.ads_preloader_start = function()
+        pprint("start preloader ads")
+    end
+    gamescore.callbacks.ads_preloader_close = function(success)
+        pprint("close preloader ads:", success)
+    end
+
+    gamescore.callbacks.ads_rewarded_start = function()
+        pprint("start rewarded ads")
+    end
+    gamescore.callbacks.ads_rewarded_close = function(success)
+        pprint("close rewarded ads:", success)
+    end
+    gamescore.callbacks.ads_rewarded_reward = function()
+        pprint("reward rewarded ads")
+    end
+
+    gamescore.callbacks.ads_sticky_start = function()
+        pprint("start sticky ads")
+    end
+    gamescore.callbacks.ads_sticky_render = function()
+        pprint("render sticky ads")
+    end
+    gamescore.callbacks.ads_sticky_refresh = function()
+        pprint("refresh sticky ads")
+    end
+    gamescore.callbacks.ads_sticky_close = function()
+        pprint("close sticky ads")
+    end
+
+    gamescore.callbacks.player_sync = function(success)
+        pprint("sync player:", success)
+    end
+    gamescore.callbacks.player_load = function(success)
+        pprint("load player:", success)
+    end
+    gamescore.callbacks.player_login = function(success)
+        pprint("login player:", success)
+    end
+    gamescore.callbacks.player_fetch_fields = function(success)
+        pprint("fetch fields player", success)
+    end
+    gamescore.callbacks.player_change = function()
+        pprint("change player")
+    end
+
+    gamescore.callbacks.achievements_unlock = function(achievement)
+        pprint("achievement unlock:", achievement)
+    end
+    gamescore.callbacks.achievements_unlock_error = function(error)
+        pprint("achievement unlock error:", error)
+    end
+    gamescore.callbacks.achievements_open = function()
+        pprint("open achievements")
+    end
+    gamescore.callbacks.achievements_close = function()
+        pprint("close achievements")
+    end
+    gamescore.callbacks.achievements_fetch = function(result)
+        pprint("fetch achievements:", result)
+    end
+    gamescore.callbacks.achievements_fetch_error = function(error)
+        pprint("fetch achievements error:", error)
+    end
+
+    gamescore.callbacks.payments_purchase = function(result)
+        pprint("Payments purchase:", result)
+    end
+    gamescore.callbacks.payments_purchase_error = function(error)
+        pprint("Payments purchase error:", error)
+    end
+    gamescore.callbacks.payments_consume = function(result)
+        pprint("Payments consume:", result)
+    end
+    gamescore.callbacks.payments_consume_error = function(error)
+        pprint("Payments consume error:", error)
+    end
+    gamescore.callbacks.payments_fetch_products = function(result)
+        pprint("Payments fetch products:", result)
+    end
+    gamescore.callbacks.payments_fetch_products_error = function(error)
+        pprint("Payments fetch products error:", error)
+    end
+
+    gamescore.callbacks.games_collections_open = function()
+        pprint("Games collections open")
+    end
+    gamescore.callbacks.games_collections_close = function()
+        pprint("Games collections close")
+    end
+    gamescore.callbacks.games_collections_fetch = function(result)
+        pprint("Games collections fetch", result)
+    end
+    gamescore.callbacks.games_collections_fetch_error = function(error)
+        pprint("Games collections fetch error:", error)
+    end
+
+    gamescore.callbacks.fullscreen_open = function()
+        pprint("Fullscreen open")
+    end
+    gamescore.callbacks.fullscreen_close = function()
+        pprint("Fullscreen close")
+    end
+    gamescore.callbacks.fullscreen_change = function()
+        pprint("Fullscreen change")
+    end
+
+    -- установка параметров "заглушек"
+    --mock_api.player.name = "my player name"
+    --mock_api.player.id = 625
+
+    mock_api.player = function()
+        return {
+            isLoggedIn = false,
+            hasAnyCredentials = false,
+            id = 234,
+            score = 500,
+            name = "player name",
+            avatar = "avatar",
+            isStub = true,
+            fields = mock_api.fields_data
+        }
+    end
+end
+
+function on_input(self, action_id, action)
+    if action_id == hash("touch") and action.pressed then
+        for button, callback in pairs(buttons) do
+            if gui.pick_node(gui.get_node(button), action.x, action.y) then
+                callback()
+            end
+        end
+    end
+end
