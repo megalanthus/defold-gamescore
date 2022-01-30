@@ -1,5 +1,6 @@
 local M = {}
 
+local version = "GameScore for Defold v0.1.0"
 local json_encode = require("gamescore.json")
 local callback_ids = require("gamescore.callback_ids")
 if not html5 then
@@ -69,7 +70,11 @@ local function register_callback(id, callback)
     callbacks[id] = callback
 end
 
-local function call_callback(id, message)
+local function remove_callback(id)
+    callbacks[id] = nil
+end
+
+local function on_callback(self, id, message)
     local callback = callbacks[id]
     if callback == nil then
         local callback_name = get_callback_name(id)
@@ -81,6 +86,8 @@ local function call_callback(id, message)
             assert(type(callback) == "function",
                     string.format("callbacks.'%s' must be a function!", callback_name))
         end
+    else
+        remove_callback(id)
     end
     assert(callback ~= nil, string.format("The callback with the id '%s' is not registered!", id))
     if message == "" then
@@ -93,15 +100,6 @@ local function call_callback(id, message)
             callback(message)
         end
     end
-end
-
-local function remove_callback(id)
-    callbacks[id] = nil
-end
-
-local function on_callback(self, callback_id, message)
-    call_callback(callback_id, message)
-    remove_callback(callback_id)
 end
 
 local function get_callback_id()
@@ -117,8 +115,9 @@ end
 ---@param method string выполняемый метод объект или поле объекта, например: "player.sync"
 ---@param parameters any параметры метода, если параметров несколько, то таблица (массив) параметров.
 ---@param callback function функция обратного вызова, если nil, тогда функция сразу вернет результат
+---@param native_api boolean если true, то будет вызван нативный метод
 ---@return any результат выполнения метода, или nil, если задан callback
-local function call_api(method, parameters, callback)
+local function call_api(method, parameters, callback, native_api)
     if type(parameters) ~= "table" then
         parameters = { parameters }
     end
@@ -126,9 +125,9 @@ local function call_api(method, parameters, callback)
     if callback then
         local callback_id = get_callback_id()
         register_callback(callback_id, callback)
-        gamescore.call_api(method, parameters, callback_id)
+        gamescore.call_api(method, parameters, callback_id, native_api)
     else
-        local result = gamescore.call_api(method, parameters)
+        local result = gamescore.call_api(method, parameters, nil, native_api)
         if result then
             local is_ok, value = pcall(json.decode, result)
             if is_ok then
@@ -180,6 +179,12 @@ M.callbacks = {
     fullscreen_change = nil
 }
 
+---Возвращает версию плагина
+---@return string
+function M.get_plugin_version()
+    return version
+end
+
 ---Инициализация gamescore
 ---@param callback function функция обратного вызова по завершению инициализации: callback(success)
 function M.init(callback)
@@ -197,10 +202,22 @@ function M.init(callback)
     gamescore.init(json_encode.encode(callback_ids), callback_id)
 end
 
+---В разработке?
+---@return boolean
+function M.is_dev()
+    return call_api("isDev").value == true
+end
+
+---Мобильное устройство?
+---@return boolean
+function M.is_mobile()
+    return call_api("isMobile").value == true
+end
+
 ---Получить текущий язык
 ---@return string код языка в формате ISO 639-1
 function M.language()
-    return call_api("language")
+    return call_api("language").value
 end
 
 ---Установить язык
@@ -223,6 +240,19 @@ end
 function M.platform()
     local parameters = { "type", "hasIntegratedAuth", "isExternalLinksAllowed", "isSecretCodeAuthAvailable" }
     return call_api("platform", parameters)
+end
+
+---Выполнить нативный метод платформы. Если method API является объектом.
+---@param method string выполняемый метод объект или поле объекта, например: "feedback.canReview"
+---@param parameters any параметры метода, если параметров несколько, то таблица (массив) параметров.
+---@param callback function|nil функция обратного вызова
+---@return any результат выполнения операции или возвращаемые данные
+function M.call_native_sdk(method, parameters, callback)
+    if type(method) ~= "string" or method == "" then
+        error("The method must be a string!", 2)
+    end
+    check_callback(callback)
+    return call_api(method, parameters, callback, true)
 end
 
 ---Получить свойства менеджера рекламы
@@ -376,7 +406,7 @@ end
 
 ---Получить поле по ключу key
 ---@param key string ключ
----@return string результат
+---@return table результат
 function M.player_get_field(key)
     check_key(key)
     return call_api("player.getField", key)

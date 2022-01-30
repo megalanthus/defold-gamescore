@@ -2,6 +2,9 @@ local gamescore = require("gamescore.gamescore")
 local mock_api = require("gamescore.mock_api")
 
 local function table_to_string(tbl, space_count)
+    if tbl == nil then
+        return "nil"
+    end
     if space_count == nil then
         space_count = 0
     end
@@ -340,7 +343,7 @@ end
 
 local function games_collections_fetch()
     gamescore.games_collections_fetch("ALL", function(result)
-        to_log("Games collections fetch: " .. table_to_string(result))
+        to_log("Games collections fetch: ")
     end)
 end
 
@@ -370,6 +373,52 @@ end
 local function fullscreen_toggle()
     to_log("Fullscreen toggle")
     gamescore.fullscreen_toggle()
+end
+
+local function is_dev()
+    to_log("Is dev: " .. tostring(gamescore.is_dev()))
+end
+
+local function is_mobile()
+    to_log("Is mobile: " .. tostring(gamescore.is_mobile()))
+end
+
+local function call_native_yandex_environment()
+    local environment = gamescore.call_native_sdk("environment")
+    to_log("Yandex environment:\n" .. table_to_string(environment))
+end
+
+local function call_native_yandex_review()
+    to_log("Call native yandex feedback.canReview")
+    gamescore.call_native_sdk("feedback.canReview", nil, function(result)
+        to_log("Call native yandex feedback.canReview:\n" .. table_to_string(result))
+        if result.value then
+            gamescore.call_native_sdk("feedback.requestReview")
+        end
+    end)
+end
+
+local function call_native_yandex_set_leaderboard()
+    gamescore.call_native_sdk("lb=getLeaderboards", nil, function(leaderboards)
+        to_log("Yandex set leaderboard 120 score:\n" .. table_to_string(leaderboards))
+        gamescore.call_native_sdk("lb:setLeaderboardScore", { "leaderboard2021", 120 })
+    end)
+end
+
+local function call_native_yandex_get_leaderboard()
+    gamescore.call_native_sdk("lb=getLeaderboards", nil, function(leaderboards)
+        if leaderboards.error then
+            to_log("Yandex get leaderboard:\n" .. table_to_string(leaderboards))
+        else
+            local parameters = {
+                "leaderboard2021",
+                { quantityTop = 10, includeUser = true, quantityAround = 3 }
+            }
+            gamescore.call_native_sdk("lb:getLeaderboardEntries", parameters, function(result)
+                to_log("Yandex get leaderboard:\n" .. table_to_string(result))
+            end)
+        end
+    end)
 end
 
 local buttons = {
@@ -433,6 +482,12 @@ local buttons = {
     ["fullscreen_open/button"] = fullscreen_open,
     ["fullscreen_close/button"] = fullscreen_close,
     ["fullscreen_toggle/button"] = fullscreen_toggle,
+    ["is_dev/button"] = is_dev,
+    ["is_mobile/button"] = is_mobile,
+    ["call_native_yandex_environment/button"] = call_native_yandex_environment,
+    ["call_native_yandex_review/button"] = call_native_yandex_review,
+    ["call_native_yandex_set_leaderboard/button"] = call_native_yandex_set_leaderboard,
+    ["call_native_yandex_get_leaderboard/button"] = call_native_yandex_get_leaderboard,
 }
 
 function init(self)
