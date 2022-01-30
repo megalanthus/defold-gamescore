@@ -27,9 +27,9 @@ M["init"] = function()
 end
 
 -- язык
-M["language"] = sys.get_sys_info().language
+M["language"] = { value = sys.get_sys_info().language }
 M["changeLanguage"] = function(language)
-    M["language"] = language
+    M["language"].value = language
 end
 
 -- приложение
@@ -46,6 +46,8 @@ M["platform"] = {
     hasIntegratedAuth = false,
     isExternalLinksAllowed = false
 }
+M["isDev"] = { value = true }
+M["isMobile"] = { value = false }
 
 -- реклама
 M.ads_fullscreen_result = true
@@ -124,7 +126,7 @@ M.player_data = {
     hasAnyCredentials = false,
     id = 0,
     score = 0,
-    name = "",
+    name = "Player",
     avatar = "",
     isStub = false,
     fields = M.fields_data
@@ -194,7 +196,7 @@ end
 M["player.getField"] = function(key)
     for _, field in pairs(M.player_data.fields) do
         if field.key == key then
-            return field
+            return { value = field }
         end
     end
     return {}

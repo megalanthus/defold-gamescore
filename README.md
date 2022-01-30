@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="gs-logo.png" alt="GameScore Logo" width="320"/>
+</p>
+
 # GameScore for Defold
 
 [GameScore](https://gs.eponesh.com) расширение для движка [Defold](https://defold.com). GameScore это сервис для удобной
@@ -5,8 +9,10 @@
 
 - [Установка](#installation)
 - [Инициализация](#initialize)
-- [Заглушка для других платформ, отличных от html](#mock)
 - [API](#api)
+- [Вызов нативных методов платформы](#native_sdk)
+- [Заглушка для других платформ, отличных от html](#mock)
+- [Заглушка для нативных вызовов](#mock-native)
 
 <a name="installation"></a>
 
@@ -90,53 +96,6 @@ gamescore.init(function(success)
 end)
 ```
 
-<a name="mock"></a>
-
-## Заглушка для других платформ, отличных от html
-
-Для платформ отличных от html предусмотрены заглушки для удобства отладки.
-
-При использовании функций:
-
-- player_get(key)
-- player_set(key, value)
-- player_add(key, value)
-- player_toggle(key)
-- player_has(key)
-- player_to_json()
-- player_from_json(player)
-
-данные будут сохраняться/считываться с помощью sys.save()/sys.load() локально в/из файла "gamescore.dat" (можно
-поменять)
-
-```lua
-local mock_api = require("gamescore.mock_api")
-
--- установим имя для файла локального хранилища данных
-mock_api.file_storage = "my_storage.dat"
-
--- установка параметров "заглушек"
-mock_api.player.name = "my player name"
-mock_api.player.id = 625
-
--- или так
-mock_api.player = function()
-    return {
-        isLoggedIn = false,
-        hasAnyCredentials = false,
-        id = 234,
-        score = 500,
-        name = "player name",
-        avatar = "avatar",
-        isStub = true,
-        fields = mock_api.fields_data
-    }
-end
-```
-
-Каждая функция-заглушка GameScore API может быть представлена таблицей данных или функцией выполняющее действие и/или
-возвращающая данные. Любые функции/данные можно переопределять для удобства работы/отладки.
-
 <a name="api"></a>
 
 ## API
@@ -152,6 +111,11 @@ end
 | `gs.app`                           | `app()`<br> Возвращает таблицу с информацией о приложении:<br> title: Заголовок<br> description: Описание<br> image: Изображение<br> url: URL на платформе
 | **Платформа** [(doc)](https://gs.eponesh.com/ru/docs/#platform)
 | `gs.platform`                      | `platform()`<br> Возвращает таблицу с информацией о платформе:<br> type: Тип платформы, например YANDEX, VK<br> hasIntegratedAuth: Возможность авторизации<br> isExternalLinksAllowed: Возможность размещать внешние ссылки
+| `gs.getNativeSDK()`                | `call_native_sdk(method, parameters, callback)`<br> Вызывает нативный метод для платформы [подобнее](#native_sdk)<br> method: метод или поле объекта нативной платформы<br> parameters: параметры вызываемого метода<br> callback: функция обратного вызова
+| **Разное**
+| `gs.isDev`                         | `is_dev()`<br> В разработке?
+| `gs.isMobile`                      | `is_mobile()`<br> Мобильное устройство?
+| ---                                | `get_plugin_version()`<br> Возвращает версию плагина
 | **Реклама** [(doc)](https://gs.eponesh.com/ru/docs/#ads)
 | `gs.ads`                           | `ads()`<br> Возвращает таблицу с информацией о менеджере рекламы:<br> isAdblockEnabled: Включен ли адблок<br> isStickyAvailable, isFullscreenAvailable, isRewardedAvailable, isPreloaderAvailable: Доступен ли баннер<br> isStickyPlaying, isFullscreenPlaying, isRewardedPlaying, isPreloaderPlaying: Играет ли сейчас реклама
 | `gs.ads.showFullscreen()`          | `ads_show_fullscreen(callback)`<br> Показывает полноэкранную рекламу<br> callback(result) функция обратного вызова или nil
@@ -250,3 +214,216 @@ end
 | `gs.fullscreen.on('open', () => {})` | `callbacks.fullscreen_open()`<br> Вход в полноэкранный режим
 | `gs.fullscreen.on('close', () => {})` | `callbacks.fullscreen_close()`<br> Выход из полноэкранного режима
 | `gs.fullscreen.on('change', () => {})` | `callbacks.fullscreen_change()`<br> Переключение полноэкранного режима
+
+<a name="native_sdk"></a>
+
+## Вызов нативных методов платформы
+
+Для вызова нативного метода, получения объекта или поля предназначена
+функция `call_native_sdk(method, parameters, callback)`.
+
+- method: строка, путь до метода, объекта или поля разделенного точками. Если указан путь до объекта или поля объекта,
+  то parameters и callback будет проигнорирован.
+- parameters: параметр вызываемого метода (string, number, boolean, table). Если необходимо передать несколько
+  параметров, то параметры необходимо поместить в массив (таблицу). Порядок параметров определяется индексом
+  массива.  **Не поддерживается передача функций в качестве параметров!**
+- callback: функция обратного вызова, необходимо указывать, если нативный метод возвращает промис. Если callback == nil,
+  то функция возвращает результат, иначе nil.
+
+**Результат возвращаемый функцией формируется по правилам:**
+
+1. Параметр method ссылается на объект или поле объекта:
+
+- Если результат string, number или boolean то возвращается таблица с результатом {value = result}.
+- Если результат object, то возвращается таблица.
+- В случае если произошло исключение, то данные об ошибке возвращаются в виде таблицы {error = "error description"}.
+
+2. Параметр method ссылается на функцию:
+
+- Если результат string, number, boolean, то возвращается таблица с результатом {value = result}.
+- Если результат object, то возвращается таблица.
+- В случае если произошло исключение, или промис завершился ошибкой, то данные об ошибке возвращаются в виде таблицы
+  {error = "error description"}.
+
+callback(result): result - результат выполнения промиса, если промис завершился ошибкой, то result = {error = "error
+description"}.
+
+### Расширенные действия с промисами
+
+Бывают ситуации, когда промис возвращает объект с функциями, которые может потребоваться выполнить позже. Для этих
+ситуаций предусмотрен механизм сохранения объекта на уровне JS и дальнейшего его использования при следующих вызовах
+API.
+
+В этих случаях формат параметра `method` для функции `call_native_sdk` может примнимать вид:
+
+- `var=path1.path2.path3`: объект path1.path2.path3 будет сохранен в переменную var
+- `var:method`: вызов метода из ранее сохраненного объекта
+- `var2=var:method2`: вызов метода (необходимо что-бы он был промисом) из ранее сохраненного объекта и сохранение
+  результата в переменной var2
+
+### Примеры различных вариантов вызова
+
+| Запрос к СДК          | Тип       | Вызов функции и результат
+|-----------------------|-----------|------------------------------------------------------
+| environment           | object    | call_native_sdk("environment")<br> table
+| environment.i18n.lang | string    | call_native_sdk("environment.i18n.lang")<br> {value = string}
+| env                   | undefined | call_native_sdk("env")<br> {error = 'Field or function "env" not found!'}
+| player.getUniqueID()  | function  | call_native_sdk("player.getUniqueID")<br> {value = string}
+| feedback.canReview()  | function  | call_native_sdk("feedback.canReview", nil, callback)<br> nil<br> После завершения промиса будет вызван callback.
+| getLeaderboards().then(lb => {}) | function  | call_native_sdk("lb=getLeaderboards", nil, callback)<br> nil<br> После завершения промиса будет вызван callback.<br> Результат будет сохранен в переменной JS.
+| lb.setLeaderboardScore() | function  | call_native_sdk("lb=setLeaderboardScore")<br> После завершения промиса будет вызван callback.<br> При вызове функции будет обращение к ранее сохраненной переменной JS, если она не найдена функция вернет {error = "The 'lb' object has not been previously saved!"}
+
+### Пример нативной работы с платформой Yandex:
+
+```lua
+local gamescore = require("gamescore.gamescore")
+
+gamescore.init(function(result)
+    if result then
+        -- Получить переменные окружения Яндекса, эквивалент ysdk.environment
+        local environment = gamescore.call_native_sdk("environment")
+
+        -- Получить язык интерфейса Яндекс.Игр в формате ISO 639-1, эквивалент ysdk.environment.i18n.lang
+        local language = gamescore.call_native_sdk("environment.i18n.lang")
+
+        -- Получить таблицы лидеров, эквивалент ysdk.getLeaderboards()
+        -- промис возвращает объект, сохраним его в переменную lb
+        gamescore.call_native_sdk("lb=getLeaderboards", nil, function(leaderboards)
+            pprint(leaderboards)
+            -- Запись нового рекорда, эквивалент lb.setLeaderboardScore('leaderboard2021', 120);
+            -- будем обращаться к переменной lb
+            gamescore.call_native_sdk("lb:setLeaderboardScore", { "leaderboard2021", 120 })
+            -- Получить данные таблицы лидеров, эквивалент lb.getLeaderboardEntries('leaderboard2021')
+            gamescore.call_native_sdk("lb:getLeaderboardEntries", "leaderboard2021", nil, function(result)
+                pprint(result)
+            end)
+
+            -- Получить данные таблицы лидеров с параметрами
+            -- эквивалент lb.getLeaderboardEntries('leaderboard2021', {quantityTop: 10, includeUser: true, quantityAround: 3})
+            local parameters = {
+                "leaderboard2021",
+                { quantityTop = 10, includeUser = true, quantityAround = 3 }
+            }
+            gamescore.call_native_sdk("lb:getLeaderboardEntries", parameters, function(result)
+                pprint(result)
+            end)
+        end)
+    end
+end)
+```
+
+Представленный выше код эквивалентен коду JS:
+
+```js
+YaGames
+    .init()
+    .then(ysdk => {
+        // Получить переменные окружения Яндекса
+        let environment = ysdk.environment;
+
+        // Получить язык интерфейса Яндекс.Игр в формате ISO 639-1
+        let language = ysdk.environment.i18n.lang;
+
+        // Получить таблицы лидеров
+        ysdk.getLeaderboards().then(function (lb) {
+            console.log(lb);
+            // Запись нового рекорда
+            lb.setLeaderboardScore('leaderboard2021', 120);
+            // Получить данные таблицы лидеров
+            lb.getLeaderboardEntries('leaderboard2021').then(function (result) {
+                console.log(result);
+            });
+
+            // Получить данные таблицы лидеров с параметрами
+            let parameters = {quantityTop: 10, includeUser: true, quantityAround: 3};
+            lb.getLeaderboardEntries('leaderboard2021', parameters).then(function (result) {
+                console.log(result);
+            });
+        });
+    });
+```
+
+<a name="mock"></a>
+
+## Заглушка для других платформ, отличных от html
+
+Для платформ отличных от html предусмотрены заглушки для удобства отладки.
+
+При использовании функций:
+
+- player_get(key)
+- player_set(key, value)
+- player_add(key, value)
+- player_toggle(key)
+- player_has(key)
+- player_to_json()
+- player_from_json(player)
+
+данные будут сохраняться/считываться с помощью sys.save()/sys.load() локально в/из файла "gamescore.dat" (можно
+поменять)
+
+```lua
+local mock_api = require("gamescore.mock_api")
+
+-- установим имя для файла локального хранилища данных
+mock_api.file_storage = "my_storage.dat"
+
+-- установка параметров "заглушек"
+mock_api.player.name = "my player name"
+mock_api.player.id = 625
+
+-- или так
+mock_api.player = function()
+    return {
+        isLoggedIn = false,
+        hasAnyCredentials = false,
+        id = 234,
+        score = 500,
+        name = "player name",
+        avatar = "avatar",
+        isStub = true,
+        fields = mock_api.fields_data
+    }
+end
+```
+
+Каждая функция-заглушка GameScore API может быть представлена таблицей данных или функцией выполняющее действие и/или
+возвращающая данные. Любые функции/данные можно переопределять для удобства работы/отладки.
+
+<a name="mock-native"></a>
+
+## Заглушка для нативных вызовов
+
+Заглушки для нативных вызовов выделены в отдельный модуль, чтобы его подключить используйте функцию `set_native_api`
+
+```lua
+--native_api.lua
+local M = {}
+
+M["environment"] = {
+    app = {
+        id = "app_id"
+    },
+    browser = {
+        lang = "ru"
+    },
+    i18n = {
+        lang = "ru",
+        tld = "ru"
+    }
+}
+
+return M
+```
+
+```lua
+local mock = require("gamescore.mock")
+local native_api = require("native_api")
+local gamescore = require("gamescore.gamescore")
+
+-- Устанавливаем заглушку для нативных функций
+mock.set_native_api(native_api)
+-- Обращаемся к нативной функции
+local result = gamescore.call_native_sdk("environment")
+pprint(result)
+```

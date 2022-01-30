@@ -12,7 +12,7 @@ typedef void (*ObjectMessage)(const int callback_id, const char* message, const 
 extern "C" void GameScore_RegisterCallback(ObjectMessage cb_string);
 extern "C" void GameScore_RemoveCallback();
 extern "C" void GameScore_Init(const char* parameters, const int callback_id);
-extern "C" char* GameScore_CallApi(const char* method, const char* parameters, const int callback_id);
+extern "C" char* GameScore_CallApi(const char* method, const char* parameters, const int callback_id, const bool native_api);
 
 struct GameScoreListener {
     GameScoreListener() : m_L(0), m_Callback(LUA_NOREF), m_Self(LUA_NOREF) {}
@@ -173,14 +173,15 @@ static int RemoveListener(lua_State* L)
 static int Init(lua_State* L)
 {
     DM_LUA_STACK_CHECK(L, 0);
-    GameScore_Init(luaL_checkstring(L, 1), luaL_checkinteger(L, 2));
+    GameScore_Init(luaL_checkstring(L, 1), luaL_checkint(L, 2));
     return 0;
 }
 
 static int CallApi(lua_State* L)
 {
     DM_LUA_STACK_CHECK(L, 1);
-    const char* result = GameScore_CallApi(luaL_checkstring(L, 1), lua_isnoneornil(L, 2) ? "" : luaL_checkstring(L, 2), lua_isnoneornil(L, 3) ? 0 : luaL_checkinteger(L, 3));
+    const char* result = GameScore_CallApi(luaL_checkstring(L, 1), lua_isnoneornil(L, 2) ? "" : luaL_checkstring(L, 2),
+        lua_tonumber(L, 3), lua_toboolean(L, 4));
     if (result == 0 || strcmp(result, "") == 0) {
         lua_pushnil(L);
     } else {

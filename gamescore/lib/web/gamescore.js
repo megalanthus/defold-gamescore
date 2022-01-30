@@ -4,6 +4,7 @@ let LibraryGameScore = {
     $GameScoreLib: {
         _callback: null,
         _gs: null,
+        _data: {},
 
         init_callbacks: function (gs, callback_ids) {
             gs.ads.on("start", () => GameScoreLib.send(callback_ids.ads_start));
@@ -57,14 +58,34 @@ let LibraryGameScore = {
             }
         },
 
-        call_api: function (method, parameters, callback_id) {
+        call_api: function (method, parameters, callback_id, native_api) {
             let method_name = UTF8ToString(method);
             let string_parameters = UTF8ToString(parameters);
+            let save_as_var = null;
+            let saved_object = null;
+            if (native_api) {
+                let method_parse = method_name.split("=");
+                if (method_parse[1]) {
+                    save_as_var = method_parse[0];
+                    method_name = method_parse[1];
+                }
+                method_parse = method_name.split(":");
+                if (method_parse[1]) {
+                    saved_object = GameScoreLib._data[method_parse[0]];
+                    if (!saved_object) {
+                        let error = `The "${method_parse[0]}" object has not been previously saved!`;
+                        return JSON.stringify({error: error});
+                    }
+                    method_name = method_parse[1];
+                }
+            }
             let path = method_name.split(".");
-            let parent_object = GameScoreLib._gs;
-            let result_object = GameScoreLib._gs;
+            let parent_object = native_api ? saved_object ? saved_object :
+                GameScoreLib._gs.platform.getNativeSDK() : GameScoreLib._gs;
+            let result_object = parent_object;
             let last_index = path.length - 1
-            path.forEach(function (item, index) {
+            for (let index = 0; index < path.length; index++) {
+                let item = path[index];
                 if (parent_object[item]) {
                     if (index === last_index) {
                         result_object = parent_object[item];
@@ -72,17 +93,24 @@ let LibraryGameScore = {
                         parent_object = parent_object[item];
                     }
                 } else {
-                    console.error(`Field or function "${method_name}" not found!`);
+                    let error = `Field or function "${method_name}" not found!`;
+                    return JSON.stringify({error: error});
                 }
-            })
+            }
             let array_parameters = JSON.parse(string_parameters);
-            switch (typeof (result_object)) {
+            switch (typeof result_object) {
                 case "string":
-                    return result_object;
                 case "number":
                 case "boolean":
                     return JSON.stringify({value: result_object});
                 case "object":
+                    if (native_api) {
+                        try {
+                            return JSON.stringify(result_object);
+                        } catch (error) {
+                            return JSON.stringify({error: error});
+                        }
+                    }
                     let result = {};
                     for (let item in result_object) {
                         let type = typeof (result_object[item]);
@@ -97,8 +125,8 @@ let LibraryGameScore = {
                 case "function":
                     let called_function = result_object.bind(parent_object);
                     if (callback_id === 0) {
-                        let result = called_function(...array_parameters)
-                        switch (typeof (result)) {
+                        let result = called_function(...array_parameters);
+                        switch (typeof result) {
                             case "string":
                             case "number":
                             case "boolean":
@@ -106,17 +134,26 @@ let LibraryGameScore = {
                             case "object":
                                 return JSON.stringify(result);
                         }
-                        return;
+                        return JSON.stringify({error: `"${typeof result}" type not supported!`});
                     } else {
-                        called_function(...array_parameters).then(
-                            function (success) {
-                                GameScoreLib.send(callback_id, success)
-                            }).catch(
-                            function (error) {
-                                GameScoreLib.send(callback_id, error);
-                            })
+                        try {
+                            called_function(...array_parameters).then(
+                                function (success) {
+                                    if (save_as_var) {
+                                        GameScoreLib._data[save_as_var] = success
+                                    }
+                                    GameScoreLib.send(callback_id, success);
+                                }).catch(
+                                function (error) {
+                                    GameScoreLib.send(callback_id, JSON.stringify({error: error}));
+                                })
+                        } catch (error) {
+                            GameScoreLib.send(callback_id, JSON.stringify({error: error}));
+                        }
                     }
                     return;
+                default:
+                    return JSON.stringify({error: `"${typeof result_object}" type not supported!`});
             }
         },
     },
@@ -144,12 +181,14 @@ let LibraryGameScore = {
         }
     },
 
-    GameScore_CallApi: function (method, parameters, callback_id) {
-        let result = GameScoreLib.call_api(method, parameters, callback_id);
-        if (result === undefined || result === null) {
-            return
+    GameScore_CallApi: function (method, parameters, callback_id, native_api) {
+        let result = GameScoreLib.call_api(method, parameters, callback_id, native_api);
+        if (result) {
+            if (callback_id > 0) {
+                GameScoreLib.send(callback_id, result)
+            }
+            return allocate(intArrayFromString(result), ALLOC_NORMAL);
         }
-        return allocate(intArrayFromString(result), ALLOC_NORMAL);
     },
 }
 
