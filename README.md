@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="gs-logo.png" alt="GameScore Logo" width="320"/>
+  <img src="gs-logo.png" alt="GameScore Logo"/>
 </p>
 
 # GameScore for Defold
@@ -112,9 +112,12 @@ end)
 | **Платформа** [(doc)](https://gs.eponesh.com/ru/docs/#platform)
 | `gs.platform`                      | `platform()`<br> Возвращает таблицу с информацией о платформе:<br> type: Тип платформы, например YANDEX, VK<br> hasIntegratedAuth: Возможность авторизации<br> isExternalLinksAllowed: Возможность размещать внешние ссылки
 | `gs.getNativeSDK()`                | `call_native_sdk(method, parameters, callback)`<br> Вызывает нативный метод для платформы [подобнее](#native_sdk)<br> method: метод или поле объекта нативной платформы<br> parameters: параметры вызываемого метода<br> callback: функция обратного вызова
+| **Константы платформ**
+| ---                                | PLATFORM_CRAZY_GAMES<br> PLATFORM_GAME_DISTRIBUTION<br> PLATFORM_GAME_MONETIZE<br> PLATFORM_OK<br> PLATFORM_VK<br> PLATFORM_YANDEX
 | **Разное**
 | `gs.isDev`                         | `is_dev()`<br> В разработке?
 | `gs.isMobile`                      | `is_mobile()`<br> Мобильное устройство?
+| `gs.serverTime`                    | `get_server_time()`<br> Возвращает серверное время
 | ---                                | `get_plugin_version()`<br> Возвращает версию плагина
 | **Реклама** [(doc)](https://gs.eponesh.com/ru/docs/#ads)
 | `gs.ads`                           | `ads()`<br> Возвращает таблицу с информацией о менеджере рекламы:<br> isAdblockEnabled: Включен ли адблок<br> isStickyAvailable, isFullscreenAvailable, isRewardedAvailable, isPreloaderAvailable: Доступен ли баннер<br> isStickyPlaying, isFullscreenPlaying, isRewardedPlaying, isPreloaderPlaying: Играет ли сейчас реклама
@@ -164,12 +167,17 @@ end)
 | `gs.player.on('change', () => {})` | `callbacks.player_change()`<br> Изменение полей игрока
 | **Таблица лидеров** [(doc)](https://gs.eponesh.com/ru/docs/#leaderboard)
 | `gs.leaderboard.open()`<br> `gs.leaderboard.open(parameters)` | `leaderboard_open(parameters)`<br> Показать таблицу лидеров во внутриигровом оверлее, parameters таблица параметров вывода или nil
-| `gs.leaderboard.fetch()`<br> `gs.leaderboard.fetch(parameters)` | `leaderboard_fetch(parameters, callback)`<br> Получить таблицу лидеров<br> parameters: таблица параметров вывода или nil<br> callback(leaders): или nil
-| `gs.leaderboard.fetchPlayerRating()`<br> `gs.leaderboard.fetchPlayerRating(parameters)` | `leaderboard_fetch_player_rating(parameters, callback)`<br> Получить рейтинг игрока<br> parameters: таблица параметров вывода или nil<br> callback(leaders): или nil
+| `gs.leaderboard.fetch()`<br> `gs.leaderboard.fetch(parameters)` | `leaderboard_fetch(parameters, callback)`<br> Получить таблицу лидеров<br> parameters: таблица параметров вывода или nil<br> callback(leaders): функция обратного вызова
+| `gs.leaderboard.fetchPlayerRating()`<br> `gs.leaderboard.fetchPlayerRating(parameters)` | `leaderboard_fetch_player_rating(parameters, callback)`<br> Получить рейтинг игрока<br> parameters: таблица параметров вывода или nil<br> callback(leaders): функция обратного вызова
+| **Изолированная таблица лидеров** [(doc)](https://gs.eponesh.com/ru/docs/#scoped-leaderboard)
+| `gs.leaderboard.openScoped(parameters)` | `leaderboard_open_scoped(parameters, callback)`<br> Показать изолированную таблицу лидеров во внутриигровом оверлее, parameters таблица параметров вывода или nil<br> callback(result): функция обратного вызова
+| `gs.leaderboard.fetchScoped(parameters)` | `leaderboard_fetch_scoped(parameters, callback)`<br> Получить изолированную таблицу лидеров<br> parameters: таблица параметров вывода или nil<br> callback(leaders): функция обратного вызова
+| `gs.leaderboard.publishRecord(parameters)` | `leaderboard_publish_record(parameters, callback)`<br> Публикация рекорда игрока в изолированную таблицу<br> parameters: таблица с параметрами и рекордом для записи<br> callback(result): функция обратного вызова
+| `gs.leaderboard.fetchPlayerRatingScoped(parameters)` | `leaderboard_fetch_player_rating_scoped(parameters, callback)`<br> Получить рейтинг игрока в изолированной таблице<br> parameters: таблица параметров вывода<br> callback(leaders): функция обратного вызова
 | **Достижения** [(doc)](https://gs.eponesh.com/ru/docs/#achievements)
-| `gs.achievements.unlock(achievement)` | `achievements_unlock(achievement, callback)`<br> Разблокировать достижение<br> achievement: id или tag достижения<br> callback(result): функция обратного вызова с результатом разблокировки достижения
+| `gs.achievements.unlock(achievement)` | `achievements_unlock(achievement, callback)`<br> Разблокировать достижение<br> achievement: id или tag достижения<br> callback(result): функция обратного вызова
 | `gs.achievements.open()`           | `achievements_open(callback)`<br> Открыть достижения в оверлее<br> callback: функция обратного вызова при открытии окна достижений
-| `gs.achievements.fetch()`          | `achievements_fetch(callback)`<br> Запросить достижения<br> callback(achievements): функция обратного вызова с достижениями
+| `gs.achievements.fetch()`          | `achievements_fetch(callback)`<br> Запросить достижения<br> callback(achievements): функция обратного вызова
 | | События:
 | `gs.achievements.on('unlock', (achievement) => {})` | `callbacks.achievements_unlock(achievement)`<br> Разблокировка достижения
 | `gs.achievements.on('error:unlock', (error) => {})` | `callbacks.achievements_unlock_error(error)`<br> Ошибка разблокировки достижения
