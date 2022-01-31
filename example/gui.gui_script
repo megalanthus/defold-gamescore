@@ -36,6 +36,10 @@ local function on_init()
     end)
 end
 
+local function get_server_time()
+    to_log("get server time: " .. gamescore.get_server_time())
+end
+
 local function on_get_language()
     to_log("current language: " .. gamescore.language())
 end
@@ -239,6 +243,49 @@ local function leaderboard_fetch_player_rating_param()
     end)
 end
 
+local function leaderboard_open_scoped()
+    local parameters = {
+        tag = "test",
+        variant = "levels"
+    }
+    gamescore.leaderboard_open_scoped(parameters, function(result)
+        to_log("Leaderboard open scoped:\n" .. table_to_string(result))
+    end)
+end
+
+local function leaderboard_fetch_scoped()
+    local parameters = {
+        tag = "test",
+        variant = "levels"
+    }
+    gamescore.leaderboard_fetch_scoped(parameters, function(leaders)
+        to_log("Leaderboard fetch scoped:\n" .. table_to_string(leaders))
+    end)
+end
+
+local function leaderboard_publish_record()
+    local record = {
+        tag = "test",
+        variant = "levels",
+        record = {
+            score = 250
+        },
+    }
+    gamescore.leaderboard_publish_record(record, function(result)
+        to_log("Leaderboard publish record:\n" .. table_to_string(result))
+    end)
+end
+
+local function leaderboard_fetch_player_rating_scoped()
+    local param = {
+        tag = "test",
+        variant = "levels"
+    }
+    gamescore.leaderboard_fetch_player_rating_scoped(param, function(leaders)
+        to_log("Leaderboard fetch rating with parameters:\n" .. table_to_string(leaders))
+    end)
+end
+
 local function achievements_unlock()
     gamescore.achievements_unlock("my_achiv", function(result)
         to_log("Achievements unlock:\n" .. table_to_string(result))
@@ -423,6 +470,7 @@ end
 
 local buttons = {
     ["init/button"] = on_init,
+    ["get_server_time/button"] = get_server_time,
     ["get_language/button"] = on_get_language,
     ["set_language_ru/button"] = set_language_ru,
     ["set_language_en/button"] = set_language_en,
@@ -459,6 +507,10 @@ local buttons = {
     ["leaderboard_fetch_param/button"] = leaderboard_fetch_param,
     ["leaderboard_fetch_player_rating/button"] = leaderboard_fetch_player_rating,
     ["leaderboard_fetch_player_rating_param/button"] = leaderboard_fetch_player_rating_param,
+    ["leaderboard_open_scoped/button"] = leaderboard_open_scoped,
+    ["leaderboard_fetch_scoped/button"] = leaderboard_fetch_scoped,
+    ["leaderboard_publish_record/button"] = leaderboard_publish_record,
+    ["leaderboard_fetch_player_rating_scoped/button"] = leaderboard_fetch_player_rating_scoped,
     ["achievements_unlock/button"] = achievements_unlock,
     ["achievements_open/button"] = achievements_open,
     ["achievements_fetch/button"] = achievements_fetch,

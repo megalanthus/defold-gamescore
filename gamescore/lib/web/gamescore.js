@@ -123,20 +123,20 @@ let LibraryGameScore = {
                     });
                     return JSON.stringify(result);
                 case "function":
-                    let called_function = result_object.bind(parent_object);
-                    if (callback_id === 0) {
-                        let result = called_function(...array_parameters);
-                        switch (typeof result) {
-                            case "string":
-                            case "number":
-                            case "boolean":
-                                return JSON.stringify({value: result});
-                            case "object":
-                                return JSON.stringify(result);
-                        }
-                        return JSON.stringify({error: `"${typeof result}" type not supported!`});
-                    } else {
-                        try {
+                    try {
+                        let called_function = result_object.bind(parent_object);
+                        if (callback_id === 0) {
+                            let result = called_function(...array_parameters);
+                            switch (typeof result) {
+                                case "string":
+                                case "number":
+                                case "boolean":
+                                    return JSON.stringify({value: result});
+                                case "object":
+                                    return JSON.stringify(result);
+                            }
+                            return JSON.stringify({error: `"${typeof result}" type not supported!`});
+                        } else {
                             called_function(...array_parameters).then(
                                 function (success) {
                                     if (save_as_var) {
@@ -147,9 +147,9 @@ let LibraryGameScore = {
                                 function (error) {
                                     GameScoreLib.send(callback_id, JSON.stringify({error: error}));
                                 })
-                        } catch (error) {
-                            GameScoreLib.send(callback_id, JSON.stringify({error: error}));
                         }
+                    } catch (error) {
+                        return JSON.stringify({error: error});
                     }
                     return;
                 default:

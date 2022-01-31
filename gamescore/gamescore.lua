@@ -1,6 +1,6 @@
 local M = {}
 
-local version = "GameScore for Defold v0.1.0"
+local version = "GameScore for Defold v0.2.0"
 local json_encode = require("gamescore.json")
 local callback_ids = require("gamescore.callback_ids")
 if not html5 then
@@ -40,6 +40,12 @@ local function check_table(tbl, parameter_name)
         return
     end
     error(string.format("The '%s' parameter must be a table!", parameter_name), 3)
+end
+
+local function check_table_required(tbl, parameter_name)
+    if type(tbl) ~= "table" then
+        error(string.format("The '%s' parameter must be a table!", parameter_name), 3)
+    end
 end
 
 local function make_parameters_id_or_tag(id_or_tag, id_or_tag_name)
@@ -179,6 +185,13 @@ M.callbacks = {
     fullscreen_change = nil
 }
 
+M.PLATFORM_CRAZY_GAMES = "CRAZY_GAMES"
+M.PLATFORM_GAME_DISTRIBUTION = "GAME_DISTRIBUTION"
+M.PLATFORM_GAME_MONETIZE = "GAME_MONETIZE"
+M.PLATFORM_OK = "OK"
+M.PLATFORM_VK = "VK"
+M.PLATFORM_YANDEX = "YANDEX"
+
 ---Возвращает версию плагина
 ---@return string
 function M.get_plugin_version()
@@ -212,6 +225,10 @@ end
 ---@return boolean
 function M.is_mobile()
     return call_api("isMobile").value == true
+end
+
+function M.get_server_time()
+    return call_api("serverTime").value
 end
 
 ---Получить текущий язык
@@ -455,6 +472,42 @@ function M.leaderboard_fetch_player_rating(parameters, callback)
     check_table(parameters, "parameters")
     check_callback(callback)
     call_api("leaderboard.fetchPlayerRating", { parameters }, callback)
+end
+
+---Показать изолированную таблицу лидеров во внутриигровом оверлее
+---@param parameters table|nil параметры вывода
+---@param callback function функция обратного вызова по результату показа: callback(result)
+function M.leaderboard_open_scoped(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("leaderboard.openScoped", { parameters }, callback)
+end
+
+---Получить изолированную таблицу лидеров
+---@param parameters table|nil параметры вывода
+---@param callback function функция обратного вызова по результату получения получения таблицы: callback(leaders)
+function M.leaderboard_fetch_scoped(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("leaderboard.fetchScoped", { parameters }, callback)
+end
+
+---Публикация рекорда игрока в изолированную таблицу
+---@param parameters table таблица с параметрами и рекордом для записи
+---@param callback function функция обратного вызова по результату публикации рекорда: callback(result)
+function M.leaderboard_publish_record(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("leaderboard.publishRecord", { parameters }, callback)
+end
+
+---Получить рейтинг игрока в изолированной таблице
+---@param parameters table параметры вывода
+---@param callback function функция обратного вызова по результату получения получения таблицы: callback(leaders)
+function M.leaderboard_fetch_player_rating_scoped(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("leaderboard.fetchPlayerRatingScoped", { parameters }, callback)
 end
 
 ---Разблокировать достижение
