@@ -2,11 +2,11 @@ local M = {}
 
 local mock_api = require("gamescore.mock_api")
 
-local callback
+local event_callback
 local mock_native_api
 
 local function send(callback_id, message)
-    callback(nil, callback_id, message)
+    event_callback(nil, message, callback_id)
 end
 
 ---Установить заглушки для нативного API
@@ -18,21 +18,14 @@ function M.set_native_api(tbl)
     mock_native_api = tbl
 end
 
-function M.add_listener(listener)
-    callback = listener
-end
-
-function M.remove_listener()
-    callback = nil
-end
-
-function M.init(parameters, callback_id)
+function M.init(callback_ids, on_event_callback, callback)
+    event_callback = on_event_callback
     mock_api.send = send
     mock_api.init()
-    send(callback_id, true)
+    callback(nil, true)
 end
 
-function M.call_api(method, parameters, callback_id, native_api)
+function M.call_api(method, parameters, native_api, callback)
     local result
     local method_api
     if native_api == true then
@@ -47,8 +40,8 @@ function M.call_api(method, parameters, callback_id, native_api)
             result = method_api
         end
     end
-    if callback_id and callback_id > 0 then
-        send(callback_id, result)
+    if callback then
+        callback(nil, result)
     else
         return result
     end

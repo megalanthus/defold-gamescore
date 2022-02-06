@@ -390,7 +390,7 @@ end
 
 local function games_collections_fetch()
     gamescore.games_collections_fetch("ALL", function(result)
-        to_log("Games collections fetch: ")
+        to_log("Games collections fetch:\n" .. table_to_string(result))
     end)
 end
 

@@ -1,5 +1,11 @@
 # Change Log
 
+# [v0.2.1](https://github.com/megalanthus/defold-gamescore/releases/tag/v0.2.1) (2022-02-06)
+
+**Fixed**
+
+- Fixed calling a callback from a foreign context.
+
 # [v0.2.0](https://github.com/megalanthus/defold-gamescore/releases/tag/v0.2.0) (2022-01-31)
 
 **Added**

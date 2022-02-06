@@ -48,6 +48,7 @@ M["platform"] = {
 }
 M["isDev"] = { value = true }
 M["isMobile"] = { value = false }
+M["serverTime"] = { value = os.date("%FT%T") }
 
 -- реклама
 M.ads_fullscreen_result = true
