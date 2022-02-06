@@ -51,9 +51,8 @@ let LibraryGameScore = {
                 let message = data === undefined || data === null ? "" :
                     typeof (data) === "object" ? JSON.stringify(data) :
                         typeof (data) === "string" ? data : data.toString();
-                let msg_arr = intArrayFromString(message, true);
-                let msg = allocate(msg_arr, ALLOC_NORMAL);
-                {{{makeDynCall("viii", "GameScoreLib._callback")}}}(callback_id, msg, msg_arr.length);
+                let msg = allocate(intArrayFromString(message), ALLOC_NORMAL);
+                {{{makeDynCall("viii", "GameScoreLib._callback")}}}(callback_id, msg);
                 Module._free(msg);
             }
         },

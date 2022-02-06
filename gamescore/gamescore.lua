@@ -1,6 +1,6 @@
 local M = {}
 
-local version = "GameScore for Defold v0.2.0"
+local version = "GameScore for Defold v0.2.1"
 local json_encode = require("gamescore.json")
 local callback_ids = require("gamescore.callback_ids")
 if not html5 then
@@ -8,7 +8,6 @@ if not html5 then
 end
 
 local is_init = false
-local callbacks = {}
 
 local function check_callback(callback)
     if callback == nil or type(callback) == "function" then
@@ -63,7 +62,7 @@ local function make_parameters_id_or_tag(id_or_tag, id_or_tag_name)
     return parameters
 end
 
-local function get_callback_name(callback_id)
+local function get_event_callback_name(callback_id)
     for callback_name, id in pairs(callback_ids) do
         if callback_id == id then
             return callback_name
@@ -71,49 +70,31 @@ local function get_callback_name(callback_id)
     end
 end
 
-local function register_callback(id, callback)
-    assert(callbacks[id] == nil, string.format("Callback with ID '%s' is already registered!", id))
-    callbacks[id] = callback
-end
-
-local function remove_callback(id)
-    callbacks[id] = nil
-end
-
-local function on_callback(self, id, message)
-    local callback = callbacks[id]
-    if callback == nil then
-        local callback_name = get_callback_name(id)
-        if callback_name ~= nil then
-            callback = M.callbacks[callback_name]
-            if callback == nil then
-                return
-            end
-            assert(type(callback) == "function",
-                    string.format("callbacks.'%s' must be a function!", callback_name))
-        end
-    else
-        remove_callback(id)
-    end
-    assert(callback ~= nil, string.format("The callback with the id '%s' is not registered!", id))
-    if message == "" then
-        callback()
-    else
-        local is_ok, result = pcall(json.decode, message)
+local function decode_result(result)
+    if result then
+        local is_ok, value = pcall(json.decode, result)
         if is_ok then
-            callback(result)
+            return value
         else
-            callback(message)
+            return result
         end
     end
 end
 
-local function get_callback_id()
-    local callback_id = 1
-    while callbacks[callback_id] ~= nil do
-        callback_id = callback_id + 1
+local function on_event_callback(self, message, id)
+    local callback_name = get_event_callback_name(id)
+    if callback_name ~= nil then
+        local callback = M.callbacks[callback_name]
+        if callback == nil then
+            return
+        end
+        assert(type(callback) == "function", string.format("callbacks.'%s' must be a function!", callback_name))
+        if message == "" then
+            callback()
+        else
+            callback(decode_result(message))
+        end
     end
-    return callback_id
 end
 
 ---Выполнить функцию gamescore API. Если method API является объектом, то в parameters дополнительно можно перечислить
@@ -129,19 +110,16 @@ local function call_api(method, parameters, callback, native_api)
     end
     parameters = json_encode.encode(parameters)
     if callback then
-        local callback_id = get_callback_id()
-        register_callback(callback_id, callback)
-        gamescore.call_api(method, parameters, callback_id, native_api)
-    else
-        local result = gamescore.call_api(method, parameters, nil, native_api)
-        if result then
-            local is_ok, value = pcall(json.decode, result)
-            if is_ok then
-                return value
+        gamescore.call_api(method, parameters, native_api, function(self, message)
+            if message == "" then
+                callback()
             else
-                return result
+                callback(decode_result(message))
             end
-        end
+        end)
+    else
+        local result = gamescore.call_api(method, parameters, native_api)
+        return decode_result(result)
     end
 end
 
@@ -209,10 +187,9 @@ function M.init(callback)
     end
     check_callback(callback)
     is_init = true
-    gamescore.add_listener(on_callback)
-    local callback_id = get_callback_id()
-    register_callback(callback_id, callback)
-    gamescore.init(json_encode.encode(callback_ids), callback_id)
+    gamescore.init(json_encode.encode(callback_ids), on_event_callback, function(self, message, callback_id)
+        callback(message)
+    end)
 end
 
 ---В разработке?

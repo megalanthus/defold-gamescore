@@ -7,6 +7,8 @@
 
 #if defined(DM_PLATFORM_HTML5)
 
+const int start_event_callbacks_id = 0xFF00;
+
 typedef void (*ObjectMessage)(const int callback_id, const char* message, const int length);
 
 extern "C" void GameScore_RegisterCallback(ObjectMessage cb_string);
@@ -14,174 +16,83 @@ extern "C" void GameScore_RemoveCallback();
 extern "C" void GameScore_Init(const char* parameters, const int callback_id);
 extern "C" char* GameScore_CallApi(const char* method, const char* parameters, const int callback_id, const bool native_api);
 
-struct GameScoreListener {
-    GameScoreListener() : m_L(0), m_Callback(LUA_NOREF), m_Self(LUA_NOREF) {}
-    lua_State* m_L;
-    int m_Callback;
-    int m_Self;
-};
+dmScript::LuaCallbackInfo* event_callback;
+dmArray<dmScript::LuaCallbackInfo*> callbacks;
 
-dmArray<GameScoreListener> m_listeners;
-
-static int GetEqualIndexOfListener(lua_State* L, GameScoreListener* cbk)
+static void InvokeCallback(dmScript::LuaCallbackInfo* cbk, const char* message, const int id)
 {
-    lua_rawgeti(L, LUA_REGISTRYINDEX, cbk->m_Callback);
-    int first = lua_gettop(L);
-    int second = first + 1;
-    for(uint32_t i = 0; i != m_listeners.Size(); ++i)
+    if (!dmScript::IsCallbackValid(cbk)) return;
+    lua_State* L = dmScript::GetCallbackLuaContext(cbk);
+    DM_LUA_STACK_CHECK(L, 0);
+    if (!dmScript::SetupCallback(cbk))
     {
-        GameScoreListener* cb = &m_listeners[i];
-        lua_rawgeti(L, LUA_REGISTRYINDEX, cb->m_Callback);
-        if (lua_equal(L, first, second)){
-            lua_pop(L, 1);
-            lua_rawgeti(L, LUA_REGISTRYINDEX, cbk->m_Self);
-            lua_rawgeti(L, LUA_REGISTRYINDEX, cb->m_Self);
-            if (lua_equal(L, second, second + 1)){
-              lua_pop(L, 3);
-              return i;
-            }
-            lua_pop(L, 2);
-        } else {
-            lua_pop(L, 1);
-        }
-      }
-      lua_pop(L, 1);
-      return -1;
+        dmLogError("Failed to setup callback");
+        return;
+    }
+    lua_pushstring(L, message);
+    lua_pushnumber(L, id);
+    dmScript::PCall(L, 3, 0);       // instance + 2
+    dmScript::TeardownCallback(cbk);
 }
 
-static void UnregisterCallback(lua_State* L, GameScoreListener* cbk)
+static int RegisterCallback(dmScript::LuaCallbackInfo* cbk)
 {
-    int index = GetEqualIndexOfListener(L, cbk);
-    if (index >= 0) {
-      if(cbk->m_Callback != LUA_NOREF)
-      {
-          dmScript::Unref(cbk->m_L, LUA_REGISTRYINDEX, cbk->m_Callback);
-          dmScript::Unref(cbk->m_L, LUA_REGISTRYINDEX, cbk->m_Self);
-          cbk->m_Callback = LUA_NOREF;
-      }
-      m_listeners.EraseSwap(index);
-      if (m_listeners.Size() == 0) {
-          GameScore_RemoveCallback();
+    for (int i = 0; i < callbacks.Size(); i++)
+    {
+        if (callbacks[i] == 0) {
+            callbacks[i] = cbk;
+            return i + 1;
         }
+    }
+    if (callbacks.Full()) {
+        callbacks.OffsetCapacity(1);
+    }
+    callbacks.Push(cbk);
+    return callbacks.Size();
+}
+
+static dmScript::LuaCallbackInfo* GetCallback(const int callback_id)
+{
+    if (callback_id > callbacks.Size()) {
+        dmLogError("Callback with id '%d' not registered!", callback_id);
+        return 0;
+    }
+    int index = callback_id - 1;
+    dmScript::LuaCallbackInfo* cbk = callbacks[index];
+    callbacks[index] = 0;
+    return cbk;
+}
+
+static void GameScore_SendStringMessage(const int callback_id, const char* message)
+{
+    if (callback_id >= start_event_callbacks_id) {
+        InvokeCallback(event_callback, message, callback_id);
     } else {
-      dmLogError("Can't remove a callback that didn't not register.");
-    }
-}
-
-static bool check_callback_and_instance(GameScoreListener* cbk)
-{
-    if(cbk->m_Callback == LUA_NOREF)
-    {
-        dmLogInfo("Callback do not exist.");
-        return false;
-    }
-    lua_State* L = cbk->m_L;
-    int top = lua_gettop(L);
-    lua_rawgeti(L, LUA_REGISTRYINDEX, cbk->m_Callback);
-    //[-1] - callback
-    lua_rawgeti(L, LUA_REGISTRYINDEX, cbk->m_Self);
-    //[-1] - self
-    //[-2] - callback
-    lua_pushvalue(L, -1);
-    //[-1] - self
-    //[-2] - self
-    //[-3] - callback
-    dmScript::SetInstance(L);
-    //[-1] - self
-    //[-2] - callback
-    if (!dmScript::IsInstanceValid(L)) {
-        UnregisterCallback(L, cbk);
-        dmLogError("Could not run callback because the instance has been deleted.");
-        lua_pop(L, 2);
-        assert(top == lua_gettop(L));
-        return false;
-    }
-    return true;
-}
-
-static void GameScore_SendStringMessage(const int callback_id, const char* message, const int length)
-{
-    for(int i = m_listeners.Size() - 1; i >= 0; --i)
-    {
-        if(i > m_listeners.Size()) {
-          return;
+        if (callback_id > callbacks.Size()) {
+            dmLogError("Callback with id '%d' not registered!", callback_id);
+            return;
         }
-        GameScoreListener* cbk = &m_listeners[i];
-        lua_State* L = cbk->m_L;
-        int top = lua_gettop(L);
-        if (check_callback_and_instance(cbk)) {
-            lua_pushinteger(L, callback_id);
-            lua_pushlstring(L, message, length);
-            int ret = lua_pcall(L, 3, 0, 0);
-            if(ret != 0) {
-                dmLogError("Error running callback: %s", lua_tostring(L, -1));
-                lua_pop(L, 1);
-            }
-        }
-        assert(top == lua_gettop(L));
+        dmScript::LuaCallbackInfo* cbk = GetCallback(callback_id);
+        InvokeCallback(cbk, message, 0);
+        if (cbk) dmScript::DestroyCallback(cbk);
     }
-}
-
-static int AddListener(lua_State* L)
-{
-    GameScoreListener cbk;
-    cbk.m_L = dmScript::GetMainThread(L);
-
-    luaL_checktype(L, 1, LUA_TFUNCTION);
-    lua_pushvalue(L, 1);
-    cbk.m_Callback = dmScript::Ref(L, LUA_REGISTRYINDEX);
-
-    dmScript::GetInstance(L);
-    cbk.m_Self = dmScript::Ref(L, LUA_REGISTRYINDEX);
-
-    if(cbk.m_Callback != LUA_NOREF)
-    {
-      int index = GetEqualIndexOfListener(L, &cbk);
-        if (index < 0){
-            if(m_listeners.Full())
-            {
-                m_listeners.OffsetCapacity(1);
-            }
-            m_listeners.Push(cbk);
-      } else {
-        dmLogError("Can't register a callback again. Callback has been registered before.");
-      }
-      if (m_listeners.Size() == 1){
-          GameScore_RegisterCallback((ObjectMessage)GameScore_SendStringMessage);
-      }
-    }
-    return 0;
-}
-
-static int RemoveListener(lua_State* L)
-{
-    GameScoreListener cbk;
-    cbk.m_L = dmScript::GetMainThread(L);
-
-    luaL_checktype(L, 1, LUA_TFUNCTION);
-    lua_pushvalue(L, 1);
-
-    cbk.m_Callback = dmScript::Ref(L, LUA_REGISTRYINDEX);
-
-    dmScript::GetInstance(L);
-    cbk.m_Self = dmScript::Ref(L, LUA_REGISTRYINDEX);
-
-    UnregisterCallback(L, &cbk);
-    return 0;
 }
 
 static int Init(lua_State* L)
 {
     DM_LUA_STACK_CHECK(L, 0);
-    GameScore_Init(luaL_checkstring(L, 1), luaL_checkint(L, 2));
+    event_callback = dmScript::CreateCallback(L, 2);
+    int callback_id = RegisterCallback(dmScript::CreateCallback(L, 3));
+    GameScore_Init(luaL_checkstring(L, 1), callback_id);
     return 0;
 }
 
 static int CallApi(lua_State* L)
 {
     DM_LUA_STACK_CHECK(L, 1);
+    int callback_id = lua_isnoneornil(L, 4) ? 0 : RegisterCallback(dmScript::CreateCallback(L, 4));
     const char* result = GameScore_CallApi(luaL_checkstring(L, 1), lua_isnoneornil(L, 2) ? "" : luaL_checkstring(L, 2),
-        lua_tonumber(L, 3), lua_toboolean(L, 4));
+        callback_id, lua_toboolean(L, 3));
     if (result == 0 || strcmp(result, "") == 0) {
         lua_pushnil(L);
     } else {
@@ -193,8 +104,6 @@ static int CallApi(lua_State* L)
 
 static const luaL_reg Module_methods[] =
 {
-    {"add_listener", AddListener},
-    {"remove_listener", RemoveListener},
     {"init", Init},
     {"call_api", CallApi},
     {0, 0}
@@ -211,11 +120,13 @@ static void LuaInit(lua_State* L)
 static dmExtension::Result InitializeExtension(dmExtension::Params* params)
 {
     LuaInit(params->m_L);
+    GameScore_RegisterCallback((ObjectMessage)GameScore_SendStringMessage);
     return dmExtension::RESULT_OK;
 }
 
 static dmExtension::Result FinalizeExtension(dmExtension::Params* params)
 {
+    GameScore_RemoveCallback();
     return dmExtension::RESULT_OK;
 }
 
