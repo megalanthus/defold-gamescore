@@ -12,7 +12,7 @@ background_color {
 nodes {
   position {
     x: 100.0
-    y: 930.0
+    y: 995.0
     z: 0.0
     w: 1.0
   }
@@ -169,7 +169,7 @@ nodes {
 nodes {
   position {
     x: 200.0
-    y: 930.0
+    y: 995.0
     z: 0.0
     w: 1.0
   }
@@ -231,7 +231,7 @@ nodes {
 nodes {
   position {
     x: 730.0
-    y: 960.0
+    y: 1024.0
     z: 0.0
     w: 1.0
   }
@@ -249,7 +249,7 @@ nodes {
   }
   size {
     x: 550.0
-    y: 960.0
+    y: 1024.0
     z: 0.0
     w: 1.0
   }
@@ -293,7 +293,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 930.0
+    y: 995.0
     z: 0.0
     w: 1.0
   }
@@ -451,7 +451,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 880.0
+    y: 945.0
     z: 0.0
     w: 1.0
   }
@@ -609,7 +609,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 880.0
+    y: 945.0
     z: 0.0
     w: 1.0
   }
@@ -767,7 +767,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 880.0
+    y: 945.0
     z: 0.0
     w: 1.0
   }
@@ -925,7 +925,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 880.0
+    y: 945.0
     z: 0.0
     w: 1.0
   }
@@ -1083,7 +1083,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 830.0
+    y: 895.0
     z: 0.0
     w: 1.0
   }
@@ -1241,7 +1241,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 830.0
+    y: 895.0
     z: 0.0
     w: 1.0
   }
@@ -1399,7 +1399,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 830.0
+    y: 895.0
     z: 0.0
     w: 1.0
   }
@@ -1557,7 +1557,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 830.0
+    y: 895.0
     z: 0.0
     w: 1.0
   }
@@ -1715,7 +1715,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 780.0
+    y: 845.0
     z: 0.0
     w: 1.0
   }
@@ -1873,7 +1873,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 780.0
+    y: 845.0
     z: 0.0
     w: 1.0
   }
@@ -2031,7 +2031,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 780.0
+    y: 845.0
     z: 0.0
     w: 1.0
   }
@@ -2189,7 +2189,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 780.0
+    y: 845.0
     z: 0.0
     w: 1.0
   }
@@ -2347,7 +2347,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 730.0
+    y: 795.0
     z: 0.0
     w: 1.0
   }
@@ -2505,7 +2505,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 730.0
+    y: 795.0
     z: 0.0
     w: 1.0
   }
@@ -2663,7 +2663,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 730.0
+    y: 795.0
     z: 0.0
     w: 1.0
   }
@@ -2821,7 +2821,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 730.0
+    y: 795.0
     z: 0.0
     w: 1.0
   }
@@ -2979,7 +2979,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 680.0
+    y: 745.0
     z: 0.0
     w: 1.0
   }
@@ -3137,7 +3137,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 680.0
+    y: 745.0
     z: 0.0
     w: 1.0
   }
@@ -3295,7 +3295,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 680.0
+    y: 745.0
     z: 0.0
     w: 1.0
   }
@@ -3453,7 +3453,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 680.0
+    y: 745.0
     z: 0.0
     w: 1.0
   }
@@ -3611,7 +3611,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 630.0
+    y: 695.0
     z: 0.0
     w: 1.0
   }
@@ -3769,7 +3769,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 630.0
+    y: 695.0
     z: 0.0
     w: 1.0
   }
@@ -3927,7 +3927,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 630.0
+    y: 695.0
     z: 0.0
     w: 1.0
   }
@@ -4085,7 +4085,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 630.0
+    y: 695.0
     z: 0.0
     w: 1.0
   }
@@ -4243,7 +4243,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 580.0
+    y: 645.0
     z: 0.0
     w: 1.0
   }
@@ -4401,7 +4401,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 580.0
+    y: 645.0
     z: 0.0
     w: 1.0
   }
@@ -4559,7 +4559,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 580.0
+    y: 645.0
     z: 0.0
     w: 1.0
   }
@@ -4717,7 +4717,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 580.0
+    y: 645.0
     z: 0.0
     w: 1.0
   }
@@ -4875,7 +4875,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 530.0
+    y: 595.0
     z: 0.0
     w: 1.0
   }
@@ -5033,7 +5033,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 530.0
+    y: 595.0
     z: 0.0
     w: 1.0
   }
@@ -5191,7 +5191,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 530.0
+    y: 595.0
     z: 1.0
     w: 1.0
   }
@@ -5349,7 +5349,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 530.0
+    y: 595.0
     z: 1.0
     w: 1.0
   }
@@ -5507,7 +5507,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 480.0
+    y: 545.0
     z: 0.0
     w: 1.0
   }
@@ -5665,7 +5665,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 480.0
+    y: 545.0
     z: 1.0
     w: 1.0
   }
@@ -5823,7 +5823,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 480.0
+    y: 545.0
     z: 1.0
     w: 1.0
   }
@@ -5981,7 +5981,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 480.0
+    y: 545.0
     z: 1.0
     w: 1.0
   }
@@ -6139,7 +6139,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 430.0
+    y: 495.0
     z: 0.0
     w: 1.0
   }
@@ -6297,7 +6297,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 430.0
+    y: 495.0
     z: 1.0
     w: 1.0
   }
@@ -6455,7 +6455,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 430.0
+    y: 495.0
     z: 1.0
     w: 1.0
   }
@@ -6613,7 +6613,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 430.0
+    y: 495.0
     z: 1.0
     w: 1.0
   }
@@ -6771,7 +6771,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 380.0
+    y: 445.0
     z: 0.0
     w: 1.0
   }
@@ -6929,7 +6929,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 380.0
+    y: 445.0
     z: 0.0
     w: 1.0
   }
@@ -7087,7 +7087,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 380.0
+    y: 445.0
     z: 0.0
     w: 1.0
   }
@@ -7245,7 +7245,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 380.0
+    y: 445.0
     z: 0.0
     w: 1.0
   }
@@ -7403,7 +7403,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 330.0
+    y: 395.0
     z: 0.0
     w: 1.0
   }
@@ -7561,7 +7561,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 330.0
+    y: 395.0
     z: 0.0
     w: 1.0
   }
@@ -7719,7 +7719,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 330.0
+    y: 395.0
     z: 1.0
     w: 1.0
   }
@@ -7877,7 +7877,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 330.0
+    y: 395.0
     z: 1.0
     w: 1.0
   }
@@ -8035,7 +8035,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 280.0
+    y: 345.0
     z: 0.0
     w: 1.0
   }
@@ -8193,7 +8193,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 280.0
+    y: 345.0
     z: 1.0
     w: 1.0
   }
@@ -8351,7 +8351,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 280.0
+    y: 345.0
     z: 1.0
     w: 1.0
   }
@@ -8509,7 +8509,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 280.0
+    y: 345.0
     z: 1.0
     w: 1.0
   }
@@ -8667,7 +8667,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 230.0
+    y: 295.0
     z: 0.0
     w: 1.0
   }
@@ -8825,7 +8825,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 230.0
+    y: 295.0
     z: 0.0
     w: 1.0
   }
@@ -8983,7 +8983,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 230.0
+    y: 295.0
     z: 0.0
     w: 1.0
   }
@@ -9141,7 +9141,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 230.0
+    y: 295.0
     z: 0.0
     w: 1.0
   }
@@ -9299,7 +9299,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 180.0
+    y: 245.0
     z: -1.0
     w: 1.0
   }
@@ -9457,7 +9457,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 180.0
+    y: 245.0
     z: -1.0
     w: 1.0
   }
@@ -9615,7 +9615,324 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 180.0
+    y: 245.0
+    z: -1.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "documents_open"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/example/button.gui"
+  template_node_child: false
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "documents_open/button"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "documents_open"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Documents open\n"
+  ""
+  font: "system_font"
+  id: "documents_open/button_label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "documents_open/button"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 640.0
+    y: 245.0
+    z: -1.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "documents_fetch"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/example/button.gui"
+  template_node_child: false
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "documents_fetch/button"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "documents_fetch"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Documents fetch"
+  font: "system_font"
+  id: "documents_fetch/button_label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "documents_fetch/button"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+}
+nodes {
+  position {
+    x: 100.0
+    y: 195.0
     z: 0.0
     w: 1.0
   }
@@ -9772,8 +10089,8 @@ nodes {
 }
 nodes {
   position {
-    x: 640.0
-    y: 180.0
+    x: 280.0
+    y: 195.0
     z: 0.0
     w: 1.0
   }
@@ -9930,8 +10247,8 @@ nodes {
 }
 nodes {
   position {
-    x: 100.0
-    y: 130.0
+    x: 460.0
+    y: 195.0
     z: -1.0
     w: 1.0
   }
@@ -10088,8 +10405,8 @@ nodes {
 }
 nodes {
   position {
-    x: 280.0
-    y: 130.0
+    x: 640.0
+    y: 195.0
     z: -1.0
     w: 1.0
   }
@@ -10246,8 +10563,8 @@ nodes {
 }
 nodes {
   position {
-    x: 460.0
-    y: 130.0
+    x: 100.0
+    y: 145.0
     z: 0.0
     w: 1.0
   }
@@ -10404,8 +10721,8 @@ nodes {
 }
 nodes {
   position {
-    x: 640.0
-    y: 130.0
+    x: 280.0
+    y: 145.0
     z: -1.0
     w: 1.0
   }
@@ -10562,8 +10879,8 @@ nodes {
 }
 nodes {
   position {
-    x: 640.0
-    y: 80.0
+    x: 460.0
+    y: 145.0
     z: -1.0
     w: 1.0
   }
@@ -10721,7 +11038,7 @@ nodes {
 nodes {
   position {
     x: 22.0
-    y: 80.0
+    y: 95.0
     z: 0.0
     w: 1.0
   }
@@ -10783,7 +11100,7 @@ nodes {
 nodes {
   position {
     x: 100.0
-    y: 30.0
+    y: 45.0
     z: 0.0
     w: 1.0
   }
@@ -10941,7 +11258,7 @@ nodes {
 nodes {
   position {
     x: 280.0
-    y: 30.0
+    y: 45.0
     z: 0.0
     w: 1.0
   }
@@ -11099,7 +11416,7 @@ nodes {
 nodes {
   position {
     x: 460.0
-    y: 30.0
+    y: 45.0
     z: 0.0
     w: 1.0
   }
@@ -11257,7 +11574,7 @@ nodes {
 nodes {
   position {
     x: 640.0
-    y: 30.0
+    y: 45.0
     z: 0.0
     w: 1.0
   }

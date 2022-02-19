@@ -135,7 +135,7 @@ end)
 | `gs.ads.on('preloader:start', () => {})` | `callbacks.ads_preloader_start()`<br> Показ preloader рекламы
 | `gs.ads.on('preloader:close', (success) => {})` | `callbacks.ads_preloader_close(success)`<br> Закрытие preloader рекламы
 | `gs.ads.on('rewarded:start', () => {})` | `callbacks.ads_rewarded_start()`<br> Показ рекламы за вознаграждение
-| `gs.ads.on('rewarded:close', (success) => {})` | `callbacks.ads_rewarded_close(success)`<br> Закрытии рекламы за вознаграждение
+| `gs.ads.on('rewarded:close', (success) => {})` | `callbacks.ads_rewarded_close(success)`<br> Закрытие рекламы за вознаграждение
 | `gs.ads.on('rewarded:reward', () => {})` | `callbacks.ads_rewarded_reward()`<br> Получение награды за просмотр рекламы
 | `gs.ads.on('sticky:start', () => {})` | `callbacks.ads_sticky_start()`<br> Показ sticky баннера
 | `gs.ads.on('sticky:render', () => {})` | `callbacks.ads_sticky_render()`<br> Рендер sticky баннера
@@ -211,6 +211,14 @@ end)
 | `gs.gamesCollections.on('close', () => {})` | `callbacks.games_collections_close()`<br> Закрыт оверлей с играми
 | `gs.gamesCollections.on('fetch', (result) => {})` | `callbacks.games_collections_fetch(result)`<br> Получение коллекции игр
 | `gs.gamesCollections.on('error:fetch', (error) => {})` | `callbacks.games_collections_fetch_error(error)`<br> Ошибка получения коллекции игр
+| **Документы** [(doc)](https://gs.eponesh.com/ru/docs/#documents)
+| `gs.documents.open(parameters)` | `documents_open(parameters)`<br> Открыть политику конфиденциальности<br> parameters: таблица с параметрами
+| `gs.documents.fetch(parameters)` | `documents_fetch(parameters, callback)`<br> Получить политику конфиденциальности<br> parameters: таблица с параметрами<br> callback(result): Функция обратного вызова или nil
+| | События:
+| `gs.documents.on('open', () => {})` | `callbacks.documents_open()`<br> Открыта политика конфиденциальности
+| `gs.documents.on('close', () => {})` | `callbacks.documents_close()`<br> Закрыта политика конфиденциальности
+| `gs.documents.on('fetch', (document) => {})` | `callbacks.documents_fetch(document)`<br> Получение политики конфиденциальности
+| `gs.documents.on('error:fetch', (error) => {})` | `callbacks.documents_fetch_error(error)`<br> Ошибка получения политики конфиденциальности
 | **Аналитика** [(doc)](https://gs.eponesh.com/ru/docs/#analytics)
 | `gs.analytics.hit(url)`           | `analytics_hit(url)`<br> Посещение или просмотр страницы
 | `gs.analytics.goal(event, value)` | `analytics_goal(event, value)`<br> Отправка достижения цели

@@ -35,7 +35,11 @@ local M = {
     games_collections_fetch_error = 0xFF43,
     fullscreen_open = 0xFF50,
     fullscreen_close = 0xFF51,
-    fullscreen_change = 0xFF52
+    fullscreen_change = 0xFF52,
+    documents_open = 0xFF60,
+    documents_close = 0xFF61,
+    documents_fetch = 0xFF62,
+    documents_fetch_error = 0xFF63,
 }
 
 return M
