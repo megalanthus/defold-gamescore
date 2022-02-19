@@ -44,6 +44,10 @@ let LibraryGameScore = {
             gs.fullscreen.on("open", () => GameScoreLib.send(callback_ids.fullscreen_open));
             gs.fullscreen.on("close", () => GameScoreLib.send(callback_ids.fullscreen_close));
             gs.fullscreen.on("change", () => GameScoreLib.send(callback_ids.fullscreen_change));
+            gs.documents.on("open", () => GameScoreLib.send(callback_ids.documents_open));
+            gs.documents.on("close", () => GameScoreLib.send(callback_ids.documents_close));
+            gs.documents.on("fetch", (document) => GameScoreLib.send(callback_ids.documents_fetch, document));
+            gs.documents.on("error:fetch", (error) => GameScoreLib.send(callback_ids.documents_fetch_error, error));
         },
 
         send: function (callback_id, data) {

@@ -394,6 +394,17 @@ local function games_collections_fetch()
     end)
 end
 
+local function documents_open()
+    gamescore.documents_open({ type = "PLAYER_PRIVACY_POLICY" })
+end
+
+local function documents_fetch()
+    gamescore.documents_fetch({ type = "PLAYER_PRIVACY_POLICY", format = "TXT" }, function(document)
+        to_log("Documents fetch")
+        pprint("Documents fetch result:", document)
+    end)
+end
+
 local function analytics_hit()
     local url = "/my-page/example?query=1"
     to_log("Analytics hit: " .. url)
@@ -529,6 +540,8 @@ local buttons = {
     ["socials_join/button"] = socials_join,
     ["games_collections_open/button"] = games_collections_open,
     ["games_collections_fetch/button"] = games_collections_fetch,
+    ["documents_open/button"] = documents_open,
+    ["documents_fetch/button"] = documents_fetch,
     ["analytics_hit/button"] = analytics_hit,
     ["analytics_goal/button"] = analytics_goal,
     ["fullscreen_open/button"] = fullscreen_open,
@@ -653,6 +666,19 @@ function init(self)
     end
     gamescore.callbacks.games_collections_fetch_error = function(error)
         pprint("Games collections fetch error:", error)
+    end
+
+    gamescore.callbacks.documents_open = function()
+        pprint("Document open")
+    end
+    gamescore.callbacks.documents_close = function()
+        pprint("Document close")
+    end
+    gamescore.callbacks.documents_fetch = function(document)
+        pprint("Document fetch", document)
+    end
+    gamescore.callbacks.documents_fetch_error = function(error)
+        pprint("Document fetch error:", error)
     end
 
     gamescore.callbacks.fullscreen_open = function()

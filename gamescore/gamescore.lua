@@ -1,6 +1,6 @@
 local M = {}
 
-local version = "GameScore for Defold v0.2.1"
+local version = "GameScore for Defold v0.2.2"
 local json_encode = require("gamescore.json")
 local callback_ids = require("gamescore.callback_ids")
 if not html5 then
@@ -160,7 +160,11 @@ M.callbacks = {
     games_collections_fetch_error = nil,
     fullscreen_open = nil,
     fullscreen_close = nil,
-    fullscreen_change = nil
+    fullscreen_change = nil,
+    documents_open = nil,
+    documents_close = nil,
+    documents_fetch = nil,
+    documents_fetch_error = nil,
 }
 
 M.PLATFORM_CRAZY_GAMES = "CRAZY_GAMES"
@@ -611,6 +615,22 @@ function M.games_collections_fetch(collection, callback)
         parameters = make_parameters_id_or_tag(collection, "Collection")
     end
     call_api("gamesCollections.fetch", { parameters }, callback)
+end
+
+---Открыть политику конфиденциальности
+---@param parameters table
+function M.documents_open(parameters)
+    check_table_required(parameters, "parameters")
+    call_api("documents.open", { parameters })
+end
+
+---Получить политику конфиденциальности
+---@param parameters table
+---@param callback function функция обратного вызова по результату получения политики конфиденциальности: callback(document)
+function M.documents_fetch(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("documents.fetch", { parameters }, callback)
 end
 
 ---Посещение или просмотр страницы

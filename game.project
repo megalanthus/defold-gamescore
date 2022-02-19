@@ -6,12 +6,13 @@ shared_state = 1
 
 [display]
 width = 1280
-height = 960
+height = 1024
 
 [project]
 title = defold-gamescore
 publisher = Megalanthus
 developer = Megalanthus
+version = v0.2.2
 
 [library]
 include_dirs = gamescore
@@ -21,3 +22,4 @@ id = your id
 token = your token
 description = There are not enough words to describe the awesomeness of the game
 image = /img/ogimage.png
+
