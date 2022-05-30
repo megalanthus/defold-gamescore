@@ -1,6 +1,6 @@
 local M = {}
 
-local version = "GameScore for Defold v0.2.3"
+local version = "GameScore for Defold v0.3.0"
 local json_encode = require("gamescore.json")
 local callback_ids = require("gamescore.callback_ids")
 if not html5 then
@@ -22,9 +22,9 @@ local function check_key(key)
     end
 end
 
-local function check_string(str, parameter)
+local function check_string(str, parameter_name)
     if type(str) ~= "string" then
-        error(string.format("The '%s' must be a string!", parameter), 3)
+        error(string.format("The '%s' must be a string!", parameter_name), 3)
     end
 end
 
@@ -34,10 +34,18 @@ local function check_value(value)
     end
 end
 
-local function check_number_value(value)
-    if type(value) ~= "number" then
-        error("The value must be a number!", 3)
+local function check_number_value(value, parameter_name, can_be_nil)
+    if (can_be_nil and value == nil) or type(value) == "number" then
+        return
     end
+    error(string.format("The '%s' must be a number!", parameter_name), 3)
+end
+
+local function check_boolean(value, parameter_name, can_be_nil)
+    if (can_be_nil and value == nil) or type(value) == "boolean" then
+        return
+    end
+    error(string.format("The '%s' must be a boolean!", parameter_name), 3)
 end
 
 local function check_table(tbl, parameter_name)
@@ -166,6 +174,14 @@ M.callbacks = {
     games_collections_close = nil,
     games_collections_fetch = nil,
     games_collections_fetch_error = nil,
+    images_upload = nil,
+    images_upload_error = nil,
+    images_choose = nil,
+    images_choose_error = nil,
+    images_fetch = nil,
+    images_fetch_error = nil,
+    images_fetch_more = nil,
+    images_fetch_more_error = nil,
     fullscreen_open = nil,
     fullscreen_close = nil,
     fullscreen_change = nil,
@@ -368,7 +384,7 @@ end
 ---@param value number добавляемое значение
 function M.player_add(key, value)
     check_key(key)
-    check_number_value(value)
+    check_number_value(value, "value")
     call_api("player.add", { key, value })
 end
 
@@ -664,6 +680,59 @@ function M.games_collections_fetch(collection, callback)
         parameters = make_parameters_id_or_tag(collection, "Collection")
     end
     call_api("gamesCollections.fetch", { parameters }, callback)
+end
+
+---Загрузить изображение
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки изображения: callback(image)
+function M.images_upload(parameters, callback)
+    check_table_required(parameters, "parameters")
+    call_api("images.upload", { parameters }, callback)
+end
+
+---Загрузить изображение по URL
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки изображения: callback(image)
+function M.images_upload_url(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("images.uploadUrl", { parameters }, callback)
+end
+
+---Выбрать файл
+---@param callback function функция обратного вызова по результату выбора изображения: callback(result)
+function M.images_file_choice(callback)
+    call_api("images.chooseFile", nil, callback)
+end
+
+---Получить изображения
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки изображений: callback(result)
+function M.images_fetch(parameters, callback)
+    check_table(parameters, "parameters")
+    call_api("images.fetch", { parameters }, callback)
+end
+
+---Получить еще изображений
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки изображений: callback(result)
+function M.images_fetch_more(parameters, callback)
+    check_table(parameters, "parameters")
+    call_api("images.fetchMore", { parameters }, callback)
+end
+
+---Изменить размер изображения
+---@param uri string ссылка на изображение
+---@param width number требуемая ширина изображения
+---@param height number требуемая высота изображения
+---@param crop boolean обрезка изображения
+---@return string возвращает ссылку на обрезанное изображение
+function M.images_resize(uri, width, height, crop)
+    check_string(uri, "uri")
+    check_number_value(width, "width", true)
+    check_number_value(height, "height", true)
+    check_boolean(crop, "crop", true)
+    return call_api("images.resize", { uri, width, height, crop }).value
 end
 
 ---Открыть политику конфиденциальности
