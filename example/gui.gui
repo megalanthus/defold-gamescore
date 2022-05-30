@@ -12,7 +12,7 @@ background_color {
 nodes {
   position {
     x: 100.0
-    y: 995.0
+    y: 1050.0
     z: 0.0
     w: 1.0
   }
@@ -47,6 +47,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -102,6 +103,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -165,11 +167,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 200.0
-    y: 995.0
+    y: 1050.0
     z: 0.0
     w: 1.0
   }
@@ -227,11 +230,12 @@ nodes {
   template_node_child: false
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 730.0
-    y: 1024.0
+    x: 1120.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -248,8 +252,8 @@ nodes {
     w: 1.0
   }
   size {
-    x: 550.0
-    y: 1024.0
+    x: 800.0
+    y: 1080.0
     z: 0.0
     w: 1.0
   }
@@ -289,11 +293,12 @@ nodes {
   template_node_child: false
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 995.0
+    x: 460.0
+    y: 1050.0
     z: 0.0
     w: 1.0
   }
@@ -328,6 +333,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -383,6 +389,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -447,11 +454,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 945.0
+    x: 640.0
+    y: 1050.0
     z: 0.0
     w: 1.0
   }
@@ -486,6 +494,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -541,6 +550,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -605,11 +615,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 945.0
+    x: 820.0
+    y: 1050.0
     z: 0.0
     w: 1.0
   }
@@ -644,6 +655,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -699,6 +711,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -763,11 +776,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 945.0
+    x: 1000.0
+    y: 1050.0
     z: 0.0
     w: 1.0
   }
@@ -802,6 +816,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -857,6 +872,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -921,11 +937,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 945.0
+    x: 100.0
+    y: 1000.0
     z: 0.0
     w: 1.0
   }
@@ -960,6 +977,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -1015,6 +1033,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -1079,11 +1098,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 895.0
+    x: 280.0
+    y: 1000.0
     z: 0.0
     w: 1.0
   }
@@ -1118,6 +1138,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -1173,6 +1194,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -1237,11 +1259,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 895.0
+    x: 460.0
+    y: 1000.0
     z: 0.0
     w: 1.0
   }
@@ -1276,6 +1299,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -1331,6 +1355,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -1395,11 +1420,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 895.0
+    x: 100.0
+    y: 950.0
     z: 0.0
     w: 1.0
   }
@@ -1434,6 +1460,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -1489,6 +1516,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -1553,11 +1581,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 895.0
+    x: 280.0
+    y: 950.0
     z: 0.0
     w: 1.0
   }
@@ -1592,6 +1621,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -1647,6 +1677,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -1711,11 +1742,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 845.0
+    x: 460.0
+    y: 950.0
     z: 0.0
     w: 1.0
   }
@@ -1750,6 +1782,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -1805,6 +1838,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -1869,11 +1903,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 845.0
+    x: 640.0
+    y: 950.0
     z: 0.0
     w: 1.0
   }
@@ -1908,6 +1943,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -1963,6 +1999,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -2027,11 +2064,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 845.0
+    x: 820.0
+    y: 950.0
     z: 0.0
     w: 1.0
   }
@@ -2066,6 +2104,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -2121,6 +2160,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -2185,11 +2225,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 845.0
+    x: 1000.0
+    y: 950.0
     z: 0.0
     w: 1.0
   }
@@ -2224,6 +2265,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -2279,6 +2321,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -2343,11 +2386,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 100.0
-    y: 795.0
+    y: 900.0
     z: 0.0
     w: 1.0
   }
@@ -2382,6 +2426,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -2437,6 +2482,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -2501,11 +2547,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 280.0
-    y: 795.0
+    y: 900.0
     z: 0.0
     w: 1.0
   }
@@ -2540,6 +2587,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -2595,6 +2643,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -2659,11 +2708,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 460.0
-    y: 795.0
+    y: 900.0
     z: 0.0
     w: 1.0
   }
@@ -2698,6 +2748,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -2753,6 +2804,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -2817,11 +2869,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 640.0
-    y: 795.0
+    y: 900.0
     z: 0.0
     w: 1.0
   }
@@ -2856,6 +2909,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -2911,6 +2965,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -2975,11 +3030,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 745.0
+    x: 820.0
+    y: 900.0
     z: 0.0
     w: 1.0
   }
@@ -3014,6 +3070,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -3069,6 +3126,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -3133,11 +3191,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 745.0
+    x: 1000.0
+    y: 900.0
     z: 0.0
     w: 1.0
   }
@@ -3172,6 +3231,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -3227,6 +3287,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -3291,11 +3352,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 745.0
+    x: 100.0
+    y: 850.0
     z: 0.0
     w: 1.0
   }
@@ -3330,6 +3392,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -3385,6 +3448,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -3449,11 +3513,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 745.0
+    x: 280.0
+    y: 850.0
     z: 0.0
     w: 1.0
   }
@@ -3488,6 +3553,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -3543,6 +3609,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -3607,11 +3674,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 695.0
+    x: 460.0
+    y: 850.0
     z: 0.0
     w: 1.0
   }
@@ -3646,6 +3714,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -3701,6 +3770,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -3765,11 +3835,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 695.0
+    x: 640.0
+    y: 850.0
     z: 0.0
     w: 1.0
   }
@@ -3804,6 +3875,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -3859,6 +3931,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -3923,11 +3996,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 695.0
+    x: 820.0
+    y: 850.0
     z: 0.0
     w: 1.0
   }
@@ -3962,6 +4036,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -4017,6 +4092,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -4081,11 +4157,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 695.0
+    x: 1000.0
+    y: 850.0
     z: 0.0
     w: 1.0
   }
@@ -4120,6 +4197,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -4175,6 +4253,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -4239,11 +4318,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 100.0
-    y: 645.0
+    y: 800.0
     z: 0.0
     w: 1.0
   }
@@ -4278,6 +4358,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -4333,6 +4414,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -4397,11 +4479,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 280.0
-    y: 645.0
+    y: 800.0
     z: 0.0
     w: 1.0
   }
@@ -4436,6 +4519,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -4491,6 +4575,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -4555,11 +4640,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 460.0
-    y: 645.0
+    y: 800.0
     z: 0.0
     w: 1.0
   }
@@ -4594,6 +4680,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -4649,6 +4736,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -4713,11 +4801,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 640.0
-    y: 645.0
+    y: 800.0
     z: 0.0
     w: 1.0
   }
@@ -4752,6 +4841,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -4807,6 +4897,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -4871,11 +4962,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 595.0
+    x: 820.0
+    y: 800.0
     z: 0.0
     w: 1.0
   }
@@ -4910,6 +5002,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -4965,6 +5058,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -5029,11 +5123,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 595.0
+    x: 1000.0
+    y: 800.0
     z: 0.0
     w: 1.0
   }
@@ -5068,6 +5163,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -5123,6 +5219,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -5187,11 +5284,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 595.0
+    x: 100.0
+    y: 750.0
     z: 1.0
     w: 1.0
   }
@@ -5226,6 +5324,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -5281,6 +5380,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -5345,11 +5445,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 595.0
+    x: 280.0
+    y: 750.0
     z: 1.0
     w: 1.0
   }
@@ -5384,6 +5485,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -5439,6 +5541,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -5503,11 +5606,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 545.0
+    x: 460.0
+    y: 750.0
     z: 0.0
     w: 1.0
   }
@@ -5542,6 +5646,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -5597,6 +5702,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -5661,11 +5767,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 545.0
+    x: 640.0
+    y: 750.0
     z: 1.0
     w: 1.0
   }
@@ -5700,6 +5807,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -5755,6 +5863,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -5819,11 +5928,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 545.0
+    x: 820.0
+    y: 750.0
     z: 1.0
     w: 1.0
   }
@@ -5858,6 +5968,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -5913,6 +6024,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -5977,11 +6089,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 545.0
+    x: 1000.0
+    y: 750.0
     z: 1.0
     w: 1.0
   }
@@ -6016,6 +6129,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -6071,6 +6185,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -6135,11 +6250,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 100.0
-    y: 495.0
+    y: 700.0
     z: 0.0
     w: 1.0
   }
@@ -6174,6 +6290,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -6229,6 +6346,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -6293,11 +6411,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 280.0
-    y: 495.0
+    y: 700.0
     z: 1.0
     w: 1.0
   }
@@ -6332,6 +6451,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -6387,6 +6507,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -6451,11 +6572,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 460.0
-    y: 495.0
+    y: 700.0
     z: 1.0
     w: 1.0
   }
@@ -6490,6 +6612,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -6545,6 +6668,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -6609,11 +6733,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 640.0
-    y: 495.0
+    y: 700.0
     z: 1.0
     w: 1.0
   }
@@ -6648,6 +6773,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -6703,6 +6829,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -6767,11 +6894,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 100.0
-    y: 445.0
+    y: 650.0
     z: 0.0
     w: 1.0
   }
@@ -6806,6 +6934,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -6861,6 +6990,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -6925,11 +7055,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 280.0
-    y: 445.0
+    y: 650.0
     z: 0.0
     w: 1.0
   }
@@ -6964,6 +7095,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -7019,6 +7151,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -7083,11 +7216,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 460.0
-    y: 445.0
+    y: 650.0
     z: 0.0
     w: 1.0
   }
@@ -7122,6 +7256,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -7177,6 +7312,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -7241,11 +7377,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 640.0
-    y: 445.0
+    y: 650.0
     z: 0.0
     w: 1.0
   }
@@ -7280,6 +7417,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -7335,6 +7473,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -7399,11 +7538,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 100.0
-    y: 395.0
+    y: 600.0
     z: 0.0
     w: 1.0
   }
@@ -7438,6 +7578,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -7493,6 +7634,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -7557,11 +7699,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 280.0
-    y: 395.0
+    y: 600.0
     z: 0.0
     w: 1.0
   }
@@ -7596,6 +7739,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -7651,6 +7795,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -7715,11 +7860,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 460.0
-    y: 395.0
+    y: 600.0
     z: 1.0
     w: 1.0
   }
@@ -7754,6 +7900,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -7809,6 +7956,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -7873,11 +8021,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 640.0
-    y: 395.0
+    y: 600.0
     z: 1.0
     w: 1.0
   }
@@ -7912,6 +8061,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -7967,6 +8117,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -8031,11 +8182,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 100.0
-    y: 345.0
+    y: 550.0
     z: 0.0
     w: 1.0
   }
@@ -8070,6 +8222,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -8125,6 +8278,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -8189,11 +8343,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 280.0
-    y: 345.0
+    y: 550.0
     z: 1.0
     w: 1.0
   }
@@ -8228,6 +8383,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -8283,6 +8439,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -8347,11 +8504,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 460.0
-    y: 345.0
+    y: 550.0
     z: 1.0
     w: 1.0
   }
@@ -8386,6 +8544,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -8441,6 +8600,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -8505,11 +8665,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 640.0
-    y: 345.0
+    y: 550.0
     z: 1.0
     w: 1.0
   }
@@ -8544,6 +8705,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -8599,6 +8761,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -8663,11 +8826,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 295.0
+    x: 820.0
+    y: 550.0
     z: 0.0
     w: 1.0
   }
@@ -8702,6 +8866,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -8757,6 +8922,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -8821,11 +8987,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 295.0
+    x: 1000.0
+    y: 550.0
     z: 0.0
     w: 1.0
   }
@@ -8860,6 +9027,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -8915,6 +9083,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -8979,11 +9148,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 295.0
+    x: 100.0
+    y: 500.0
     z: 0.0
     w: 1.0
   }
@@ -9018,6 +9188,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -9073,6 +9244,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -9137,11 +9309,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 295.0
+    x: 280.0
+    y: 500.0
     z: 0.0
     w: 1.0
   }
@@ -9176,6 +9349,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -9231,6 +9405,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -9295,11 +9470,656 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 100.0
-    y: 245.0
+    y: 450.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "variables_fetch"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/example/button.gui"
+  template_node_child: false
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "variables_fetch/button"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "variables_fetch"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Variable fetch"
+  font: "system_font"
+  id: "variables_fetch/button_label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "variables_fetch/button"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 280.0
+    y: 450.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "variables_get"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/example/button.gui"
+  template_node_child: false
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "variables_get/button"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "variables_get"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Variables get"
+  font: "system_font"
+  id: "variables_get/button_label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "variables_get/button"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 460.0
+    y: 450.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "variables_has"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/example/button.gui"
+  template_node_child: false
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "variables_has/button"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "variables_has"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Varables has"
+  font: "system_font"
+  id: "variables_has/button_label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "variables_has/button"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 640.0
+    y: 450.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_TEMPLATE
+  id: "variables_type"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  template: "/example/button.gui"
+  template_node_child: false
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  type: TYPE_BOX
+  blend_mode: BLEND_MODE_ALPHA
+  texture: ""
+  id: "variables_type/button"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  adjust_mode: ADJUST_MODE_FIT
+  parent: "variables_type"
+  layer: ""
+  inherit_alpha: true
+  slice9 {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
+  }
+  clipping_mode: CLIPPING_MODE_NONE
+  clipping_visible: true
+  clipping_inverted: false
+  alpha: 1.0
+  template_node_child: true
+  size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 160.0
+    y: 32.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Variables type"
+  font: "system_font"
+  id: "variables_type/button_label"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  parent: "variables_type/button"
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  overridden_fields: 8
+  template_node_child: true
+  text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 100.0
+    y: 300.0
     z: -1.0
     w: 1.0
   }
@@ -9334,6 +10154,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -9389,6 +10210,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -9453,11 +10275,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 280.0
-    y: 245.0
+    y: 300.0
     z: -1.0
     w: 1.0
   }
@@ -9492,6 +10315,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -9547,6 +10371,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -9611,11 +10436,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 460.0
-    y: 245.0
+    y: 300.0
     z: -1.0
     w: 1.0
   }
@@ -9650,6 +10476,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -9705,6 +10532,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -9770,11 +10598,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 640.0
-    y: 245.0
+    y: 300.0
     z: -1.0
     w: 1.0
   }
@@ -9809,6 +10638,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -9864,6 +10694,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -9928,11 +10759,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 195.0
+    x: 820.0
+    y: 300.0
     z: 0.0
     w: 1.0
   }
@@ -9967,6 +10799,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -10022,6 +10855,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -10086,11 +10920,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 195.0
+    x: 1000.0
+    y: 300.0
     z: 0.0
     w: 1.0
   }
@@ -10125,6 +10960,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -10180,6 +11016,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -10244,11 +11081,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 195.0
+    x: 100.0
+    y: 250.0
     z: -1.0
     w: 1.0
   }
@@ -10283,6 +11121,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -10338,6 +11177,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -10402,11 +11242,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 195.0
+    x: 280.0
+    y: 250.0
     z: -1.0
     w: 1.0
   }
@@ -10441,6 +11282,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -10496,6 +11338,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -10560,11 +11403,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 145.0
+    x: 460.0
+    y: 250.0
     z: 0.0
     w: 1.0
   }
@@ -10599,6 +11443,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -10654,6 +11499,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -10718,11 +11564,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 145.0
+    x: 640.0
+    y: 250.0
     z: -1.0
     w: 1.0
   }
@@ -10757,6 +11604,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -10812,6 +11660,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -10876,11 +11725,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 145.0
+    x: 820.0
+    y: 250.0
     z: -1.0
     w: 1.0
   }
@@ -10915,6 +11765,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -10970,6 +11821,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -11034,11 +11886,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
     x: 22.0
-    y: 95.0
+    y: 150.0
     z: 0.0
     w: 1.0
   }
@@ -11096,11 +11949,12 @@ nodes {
   template_node_child: false
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 100.0
-    y: 45.0
+    x: 280.0
+    y: 150.0
     z: 0.0
     w: 1.0
   }
@@ -11135,6 +11989,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -11190,6 +12045,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -11254,11 +12110,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 280.0
-    y: 45.0
+    x: 460.0
+    y: 150.0
     z: 0.0
     w: 1.0
   }
@@ -11293,6 +12150,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -11348,6 +12206,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -11412,11 +12271,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 460.0
-    y: 45.0
+    x: 640.0
+    y: 150.0
     z: 0.0
     w: 1.0
   }
@@ -11451,6 +12311,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -11506,6 +12367,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -11570,11 +12432,12 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 nodes {
   position {
-    x: 640.0
-    y: 45.0
+    x: 820.0
+    y: 150.0
     z: 0.0
     w: 1.0
   }
@@ -11609,6 +12472,7 @@ nodes {
   alpha: 1.0
   template: "/example/button.gui"
   template_node_child: false
+  custom_type: 0
 }
 nodes {
   position {
@@ -11664,6 +12528,7 @@ nodes {
   alpha: 1.0
   template_node_child: true
   size_mode: SIZE_MODE_MANUAL
+  custom_type: 0
 }
 nodes {
   position {
@@ -11728,6 +12593,7 @@ nodes {
   template_node_child: true
   text_leading: 1.0
   text_tracking: 0.0
+  custom_type: 0
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

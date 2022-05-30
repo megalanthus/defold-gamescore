@@ -1,6 +1,6 @@
 local M = {}
 
-local version = "GameScore for Defold v0.2.2"
+local version = "GameScore for Defold v0.2.3"
 local json_encode = require("gamescore.json")
 local callback_ids = require("gamescore.callback_ids")
 if not html5 then
@@ -19,6 +19,12 @@ end
 local function check_key(key)
     if type(key) ~= "string" then
         error("The key must be a string!", 3)
+    end
+end
+
+local function check_string(str, parameter)
+    if type(str) ~= "string" then
+        error(string.format("The '%s' must be a string!", parameter), 3)
     end
 end
 
@@ -154,6 +160,8 @@ M.callbacks = {
     payments_consume_error = nil,
     payments_fetch_products = nil,
     payments_fetch_products_error = nil,
+    game_variables_fetch = nil,
+    game_variables_fetch_error = nil,
     games_collections_open = nil,
     games_collections_close = nil,
     games_collections_fetch = nil,
@@ -540,6 +548,7 @@ end
 
 ---Проверка наличия покупки
 ---@param product number|string id или tag продукта
+---@return boolean результат
 function M.payments_has(product)
     local parameters = make_parameters_id_or_tag(product, "Product")
     return call_api("payments.has", parameters.id or parameters.tag).value
@@ -591,6 +600,46 @@ end
 function M.socials_join_community()
     call_api("socials.joinCommunity")
 end
+
+---Запросить переменные
+---@param callback function функция обратного вызова по результату запроса переменных: callback()
+function M.game_variables_fetch(callback)
+    check_callback(callback)
+    call_api("variables.fetch", nil, callback)
+end
+
+---Получить значение переменной
+---@param variable string название переменной
+function M.game_variables_get(variable)
+    check_string(variable, "variable")
+    return call_api("variables.get", { variable }).value
+end
+
+---Проверить существование переменной
+---@param variable string название переменной
+---@return boolean результат
+function M.game_variables_has(variable)
+    check_string(variable, "variable")
+    return call_api("variables.has", { variable }).value
+end
+
+---Получить тип переменной
+---@param variable string название переменной
+---@return string результат
+function M.game_variables_get_type(variable)
+    check_string(variable, "variable")
+    return call_api("variables.type", { variable }).value
+end
+
+M.VARIABLE_DATA = "data"
+M.VARIABLE_STRING = M.VARIABLE_DATA
+M.VARIABLE_STATS = "stats"
+M.VARIABLE_NUMBER = M.VARIABLE_STATS
+M.VARIABLE_FLAG = "flag"
+M.VARIABLE_BOOLEAN = M.VARIABLE_FLAG
+M.VARIABLE_HTML = "doc_html"
+M.VARIABLE_IMAGE = "image"
+M.VARIABLE_FILE = "file"
 
 ---Открыть оверлей с играми
 ---@param collection number|string id или tag коллекции

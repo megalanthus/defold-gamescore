@@ -5,8 +5,8 @@ main_collection = /example/main.collectionc
 shared_state = 1
 
 [display]
-width = 1280
-height = 1024
+width = 1920
+height = 1080
 
 [project]
 title = defold-gamescore

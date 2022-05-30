@@ -1,5 +1,11 @@
 # Change Log
 
+# [v0.2.3](https://github.com/megalanthus/defold-gamescore/releases/tag/v0.2.3) (2022-05-30)
+
+**Added**
+
+- Game variables section.
+
 # [v0.2.2](https://github.com/megalanthus/defold-gamescore/releases/tag/v0.2.2) (2022-02-19)
 
 **Added**

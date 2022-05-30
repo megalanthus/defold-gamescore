@@ -382,6 +382,24 @@ local function socials_join()
     gamescore.socials_join_community()
 end
 
+local function variables_fetch()
+    gamescore.game_variables_fetch(function()
+        to_log("variables fetch")
+    end)
+end
+
+local function variables_get()
+    to_log("variables get 'var': " .. tostring(gamescore.game_variables_get("var")))
+end
+
+local function variables_has()
+    to_log("variables has 'var': " .. tostring(gamescore.game_variables_has("var")))
+end
+
+local function variables_type()
+    to_log("variables type 'var': " .. tostring(gamescore.game_variables_get_type("var")))
+end
+
 local function games_collections_open()
     gamescore.games_collections_open("ALL", function()
         to_log("Games collections open")
@@ -538,6 +556,10 @@ local buttons = {
     ["socials_invite/button"] = socials_invite,
     ["socials_invite_param/button"] = socials_invite_param,
     ["socials_join/button"] = socials_join,
+    ["variables_fetch/button"] = variables_fetch,
+    ["variables_get/button"] = variables_get,
+    ["variables_has/button"] = variables_has,
+    ["variables_type/button"] = variables_type,
     ["games_collections_open/button"] = games_collections_open,
     ["games_collections_fetch/button"] = games_collections_fetch,
     ["documents_open/button"] = documents_open,
