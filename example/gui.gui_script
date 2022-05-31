@@ -425,7 +425,7 @@ local function images_upload_url()
 end
 
 local function images_file_choice()
-    gamescore.images_file_choice(function(image)
+    gamescore.images_choice_file(function(image)
         to_log("Images file choice:\n" .. table_to_string(image))
         gamescore.images_upload_url({ url = image.tempUrl, tags = { "level7" } }, function(result)
             to_log("Images upload url:\n" .. table_to_string(result))
@@ -434,7 +434,6 @@ local function images_file_choice()
 end
 
 local function images_fetch()
-    --gamescore.images_fetch({ limit = 2, tags = { "screenshot", "level7" } }, function(image)
     gamescore.images_fetch(nil, function(image)
         to_log("Images fetch:\n" .. table_to_string(image))
     end)
@@ -452,6 +451,59 @@ local function images_resize()
     gamescore.images_upload_url({ url = image, tags = { "screenshot" } }, function(result)
         to_log("Images upload url:\n" .. table_to_string(result))
     end)
+end
+
+local function images_can_upload()
+    to_log("Images can upload: " .. tostring(gamescore.images_can_upload()))
+end
+
+local function files_upload()
+    gamescore.files_upload({ accept = ".txt, .json" }, function(result)
+        to_log("Files upload:\n" .. table_to_string(result))
+    end)
+end
+
+local function files_upload_url()
+    gamescore.files_upload_url({ filename = "mysave2.txt", url = "https://s3.eponesh.com/games/files/1528/ugc/21452286/test.txt", tags = { "level7" } }, function(result)
+        to_log("Files upload url:\n" .. table_to_string(result))
+    end)
+end
+
+local function files_upload_content()
+    gamescore.files_upload_content({ filename = "mysave.txt", content = "Hello world!" }, function(result)
+        to_log("Files upload content:\n" .. table_to_string(result))
+    end)
+end
+
+local function files_load_content()
+    gamescore.files_load_content("https://s3.eponesh.com/games/files/1528/ugc/21456702/mysave.txt", function(result)
+        to_log("Files load content:\n" .. result)
+    end)
+end
+
+local function files_choose_file()
+    gamescore.files_choose_file(".txt, .json", function(result)
+        to_log("Files choose file:\n" .. table_to_string(result))
+        gamescore.files_upload_url({ filename = "mysave3.txt", url = result.tempUrl, tags = { "level7" } }, function(result)
+            to_log("Files upload url:\n" .. table_to_string(result))
+        end)
+    end)
+end
+
+local function files_fetch()
+    gamescore.files_fetch(nil, function(result)
+        to_log("Files fetch:\n" .. table_to_string(result))
+    end)
+end
+
+local function files_fetch_more()
+    gamescore.files_fetch_more({ limit = 2 }, function(result)
+        to_log("Files fetch more:\n" .. table_to_string(result))
+    end)
+end
+
+local function files_can_upload()
+    to_log("Files can upload: " .. tostring(gamescore.files_can_upload()))
 end
 
 local function documents_open()
@@ -610,6 +662,15 @@ local buttons = {
     ["images_fetch/button"] = images_fetch,
     ["images_fetch_more/button"] = images_fetch_more,
     ["images_resize/button"] = images_resize,
+    ["images_can_upload/button"] = images_can_upload,
+    ["files_upload/button"] = files_upload,
+    ["files_upload_url/button"] = files_upload_url,
+    ["files_upload_content/button"] = files_upload_content,
+    ["files_load_content/button"] = files_load_content,
+    ["files_choose_file/button"] = files_choose_file,
+    ["files_fetch/button"] = files_fetch,
+    ["files_fetch_more/button"] = files_fetch_more,
+    ["files_can_upload/button"] = files_can_upload,
     ["documents_open/button"] = documents_open,
     ["documents_fetch/button"] = documents_fetch,
     ["analytics_hit/button"] = analytics_hit,
@@ -768,6 +829,37 @@ function init(self)
     end
     gamescore.callbacks.images_fetch_more_error = function(error)
         pprint("Images fetch more error:", error)
+    end
+
+    gamescore.callbacks.files_upload = function(result)
+        pprint("Files upload:", result)
+    end
+    gamescore.callbacks.files_upload_error = function(error)
+        pprint("Files upload error:", error)
+    end
+    gamescore.callbacks.files_load_content = function(result)
+        pprint("Files load content:", result)
+    end
+    gamescore.callbacks.files_load_content_error = function(error)
+        pprint("Files load content error:", error)
+    end
+    gamescore.callbacks.files_choose = function(result)
+        pprint("Files choose:", result)
+    end
+    gamescore.callbacks.files_choose_error = function(error)
+        pprint("Files choose error:", error)
+    end
+    gamescore.callbacks.files_fetch = function(result)
+        pprint("Files fetch:", result)
+    end
+    gamescore.callbacks.files_fetch_error = function(error)
+        pprint("Files fetch error:", error)
+    end
+    gamescore.callbacks.files_fetch_more = function(result)
+        pprint("Files fetch more:", result)
+    end
+    gamescore.callbacks.files_fetch_more_error = function(error)
+        pprint("Files fetch more error:", error)
     end
 
     gamescore.callbacks.documents_open = function()

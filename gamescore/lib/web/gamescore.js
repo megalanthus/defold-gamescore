@@ -51,6 +51,16 @@ let LibraryGameScore = {
             gs.images.on("error:fetch", (error) => GameScoreLib.send(callback_ids.images_fetch_error, error));
             gs.images.on("fetchMore", (result) => GameScoreLib.send(callback_ids.images_fetch_more, result));
             gs.images.on("error:fetchMore", (error) => GameScoreLib.send(callback_ids.images_fetch_more_error, error));
+            gs.files.on("upload", (result) => GameScoreLib.send(callback_ids.files_upload, result));
+            gs.files.on("error:upload", (error) => GameScoreLib.send(callback_ids.files_upload_error, error));
+            gs.files.on("loadContent", (text) => GameScoreLib.send(callback_ids.files_load_content, text));
+            gs.files.on("error:loadContent", (error) => GameScoreLib.send(callback_ids.files_load_content_error, error));
+            gs.files.on("choose", (result) => GameScoreLib.send(callback_ids.files_choose, result));
+            gs.files.on("error:choose", (error) => GameScoreLib.send(callback_ids.files_choose_error, error));
+            gs.files.on("fetch", (result) => GameScoreLib.send(callback_ids.files_fetch, result));
+            gs.files.on("error:fetch", (error) => GameScoreLib.send(callback_ids.files_fetch_error, error));
+            gs.files.on("fetchMore", (result) => GameScoreLib.send(callback_ids.files_fetch_more, result));
+            gs.files.on("error:fetchMore", (error) => GameScoreLib.send(callback_ids.files_fetch_more_error, error));
             gs.fullscreen.on("open", () => GameScoreLib.send(callback_ids.fullscreen_open));
             gs.fullscreen.on("close", () => GameScoreLib.send(callback_ids.fullscreen_close));
             gs.fullscreen.on("change", () => GameScoreLib.send(callback_ids.fullscreen_change));
@@ -153,7 +163,7 @@ let LibraryGameScore = {
                             called_function(...array_parameters).then(
                                 function (success) {
                                     if (save_as_var) {
-                                        GameScoreLib._data[save_as_var] = success
+                                        GameScoreLib._data[save_as_var] = success;
                                     }
                                     GameScoreLib.send(callback_id, success);
                                 }).catch(
@@ -198,7 +208,7 @@ let LibraryGameScore = {
         let result = GameScoreLib.call_api(method, parameters, callback_id, native_api);
         if (result) {
             if (callback_id > 0) {
-                GameScoreLib.send(callback_id, result)
+                GameScoreLib.send(callback_id, result);
             }
             return allocate(intArrayFromString(result), ALLOC_NORMAL);
         }

@@ -22,10 +22,11 @@ local function check_key(key)
     end
 end
 
-local function check_string(str, parameter_name)
-    if type(str) ~= "string" then
-        error(string.format("The '%s' must be a string!", parameter_name), 3)
+local function check_string(str, parameter_name, can_be_nil)
+    if (can_be_nil and str == nil) or type(str) == "string" then
+        return
     end
+    error(string.format("The '%s' must be a string!", parameter_name), 3)
 end
 
 local function check_value(value)
@@ -182,6 +183,16 @@ M.callbacks = {
     images_fetch_error = nil,
     images_fetch_more = nil,
     images_fetch_more_error = nil,
+    files_upload = nil,
+    files_upload_error = nil,
+    files_load_content = nil,
+    files_load_content_error = nil,
+    files_choose = nil,
+    files_choose_error = nil,
+    files_fetch = nil,
+    files_fetch_error = nil,
+    files_fetch_more = nil,
+    files_fetch_more_error = nil,
     fullscreen_open = nil,
     fullscreen_close = nil,
     fullscreen_change = nil,
@@ -687,6 +698,7 @@ end
 ---@param callback function функция обратного вызова по результату загрузки изображения: callback(image)
 function M.images_upload(parameters, callback)
     check_table_required(parameters, "parameters")
+    check_callback(callback)
     call_api("images.upload", { parameters }, callback)
 end
 
@@ -701,23 +713,26 @@ end
 
 ---Выбрать файл
 ---@param callback function функция обратного вызова по результату выбора изображения: callback(result)
-function M.images_file_choice(callback)
+function M.images_choice_file(callback)
+    check_callback(callback)
     call_api("images.chooseFile", nil, callback)
 end
 
 ---Получить изображения
 ---@param parameters table
----@param callback function функция обратного вызова по результату загрузки изображений: callback(result)
+---@param callback function функция обратного вызова по результату получения изображений: callback(result)
 function M.images_fetch(parameters, callback)
     check_table(parameters, "parameters")
+    check_callback(callback)
     call_api("images.fetch", { parameters }, callback)
 end
 
 ---Получить еще изображений
 ---@param parameters table
----@param callback function функция обратного вызова по результату загрузки изображений: callback(result)
+---@param callback function функция обратного вызова по результату получения изображений: callback(result)
 function M.images_fetch_more(parameters, callback)
     check_table(parameters, "parameters")
+    check_callback(callback)
     call_api("images.fetchMore", { parameters }, callback)
 end
 
@@ -733,6 +748,81 @@ function M.images_resize(uri, width, height, crop)
     check_number_value(height, "height", true)
     check_boolean(crop, "crop", true)
     return call_api("images.resize", { uri, width, height, crop }).value
+end
+
+---Проверить возможность загрузки изображений
+---@return boolean возможность загрузки изображений
+function M.images_can_upload()
+    return call_api("images.canUpload").value == true
+end
+
+---Загрузить файл
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки файла: callback(result)
+function M.files_upload(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.upload", { parameters }, callback)
+end
+
+---Загрузить файл по URL
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки файла: callback(result)
+function M.files_upload_url(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.uploadUrl", { parameters }, callback)
+end
+
+---Загрузить контент
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки контента: callback(result)
+function M.files_upload_content(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.uploadContent", { parameters }, callback)
+end
+
+---Получить контент
+---@param uri string имя файла для загрузки
+---@param callback function функция обратного вызова по результату получения файла: callback(text)
+function M.files_load_content(uri, callback)
+    check_string(uri, "uri")
+    check_callback(callback)
+    call_api("files.loadContent", { uri }, callback)
+end
+
+---Выбрать файл
+---@param accept string типы файлов для выбора
+---@param callback function функция обратного вызова по результату выбора файла: callback(result)
+function M.files_choose_file(accept, callback)
+    check_string(accept, "accept", true)
+    check_callback(callback)
+    call_api("files.chooseFile", nil, callback)
+end
+
+---Получить файлы
+---@param parameters table
+---@param callback function функция обратного вызова по результату получения файлов: callback(result)
+function M.files_fetch(parameters, callback)
+    check_table(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.fetch", { parameters }, callback)
+end
+
+---Получить еще файлы
+---@param parameters table
+---@param callback function функция обратного вызова по результату получения файлов: callback(result)
+function M.files_fetch_more(parameters, callback)
+    check_table(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.fetchMore", { parameters }, callback)
+end
+
+---Проверить возможность загрузки файлов
+---@return boolean возможность загрузки файлов
+function M.files_can_upload()
+    return call_api("files.canUpload").value == true
 end
 
 ---Открыть политику конфиденциальности
