@@ -365,6 +365,14 @@ M["payments.fetchProducts"] = function()
     return M.product_data
 end
 
+-- Игровые переменные
+M["variables.fetch"] = function()
+    M.send(callback_ids.game_variables_fetch)
+end
+M["variables.get"] = { value = "val" }
+M["variables.has"] = { value = true }
+M["variables.type"] = { value = "data" }
+
 -- социальные действия
 M["socials"] = {
     isSupportsNativeShare = false,

@@ -5,14 +5,14 @@ main_collection = /example/main.collectionc
 shared_state = 1
 
 [display]
-width = 1280
-height = 1024
+width = 1920
+height = 1080
 
 [project]
 title = defold-gamescore
 publisher = Megalanthus
 developer = Megalanthus
-version = v0.2.2
+version = v0.3.0
 
 [library]
 include_dirs = gamescore

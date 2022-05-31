@@ -1,6 +1,6 @@
 local M = {}
 
-local version = "GameScore for Defold v0.2.2"
+local version = "GameScore for Defold v0.3.0"
 local json_encode = require("gamescore.json")
 local callback_ids = require("gamescore.callback_ids")
 if not html5 then
@@ -22,16 +22,31 @@ local function check_key(key)
     end
 end
 
+local function check_string(str, parameter_name, can_be_nil)
+    if (can_be_nil and str == nil) or type(str) == "string" then
+        return
+    end
+    error(string.format("The '%s' must be a string!", parameter_name), 3)
+end
+
 local function check_value(value)
     if type(value) ~= "string" and type(value) ~= "number" and type(value) ~= "boolean" then
         error("The value must be a string, number, or boolean!", 3)
     end
 end
 
-local function check_number_value(value)
-    if type(value) ~= "number" then
-        error("The value must be a number!", 3)
+local function check_number_value(value, parameter_name, can_be_nil)
+    if (can_be_nil and value == nil) or type(value) == "number" then
+        return
     end
+    error(string.format("The '%s' must be a number!", parameter_name), 3)
+end
+
+local function check_boolean(value, parameter_name, can_be_nil)
+    if (can_be_nil and value == nil) or type(value) == "boolean" then
+        return
+    end
+    error(string.format("The '%s' must be a boolean!", parameter_name), 3)
 end
 
 local function check_table(tbl, parameter_name)
@@ -154,10 +169,30 @@ M.callbacks = {
     payments_consume_error = nil,
     payments_fetch_products = nil,
     payments_fetch_products_error = nil,
+    game_variables_fetch = nil,
+    game_variables_fetch_error = nil,
     games_collections_open = nil,
     games_collections_close = nil,
     games_collections_fetch = nil,
     games_collections_fetch_error = nil,
+    images_upload = nil,
+    images_upload_error = nil,
+    images_choose = nil,
+    images_choose_error = nil,
+    images_fetch = nil,
+    images_fetch_error = nil,
+    images_fetch_more = nil,
+    images_fetch_more_error = nil,
+    files_upload = nil,
+    files_upload_error = nil,
+    files_load_content = nil,
+    files_load_content_error = nil,
+    files_choose = nil,
+    files_choose_error = nil,
+    files_fetch = nil,
+    files_fetch_error = nil,
+    files_fetch_more = nil,
+    files_fetch_more_error = nil,
     fullscreen_open = nil,
     fullscreen_close = nil,
     fullscreen_change = nil,
@@ -360,7 +395,7 @@ end
 ---@param value number добавляемое значение
 function M.player_add(key, value)
     check_key(key)
-    check_number_value(value)
+    check_number_value(value, "value")
     call_api("player.add", { key, value })
 end
 
@@ -540,6 +575,7 @@ end
 
 ---Проверка наличия покупки
 ---@param product number|string id или tag продукта
+---@return boolean результат
 function M.payments_has(product)
     local parameters = make_parameters_id_or_tag(product, "Product")
     return call_api("payments.has", parameters.id or parameters.tag).value
@@ -592,6 +628,46 @@ function M.socials_join_community()
     call_api("socials.joinCommunity")
 end
 
+---Запросить переменные
+---@param callback function функция обратного вызова по результату запроса переменных: callback()
+function M.game_variables_fetch(callback)
+    check_callback(callback)
+    call_api("variables.fetch", nil, callback)
+end
+
+---Получить значение переменной
+---@param variable string название переменной
+function M.game_variables_get(variable)
+    check_string(variable, "variable")
+    return call_api("variables.get", { variable }).value
+end
+
+---Проверить существование переменной
+---@param variable string название переменной
+---@return boolean результат
+function M.game_variables_has(variable)
+    check_string(variable, "variable")
+    return call_api("variables.has", { variable }).value
+end
+
+---Получить тип переменной
+---@param variable string название переменной
+---@return string результат
+function M.game_variables_get_type(variable)
+    check_string(variable, "variable")
+    return call_api("variables.type", { variable }).value
+end
+
+M.VARIABLE_DATA = "data"
+M.VARIABLE_STRING = M.VARIABLE_DATA
+M.VARIABLE_STATS = "stats"
+M.VARIABLE_NUMBER = M.VARIABLE_STATS
+M.VARIABLE_FLAG = "flag"
+M.VARIABLE_BOOLEAN = M.VARIABLE_FLAG
+M.VARIABLE_HTML = "doc_html"
+M.VARIABLE_IMAGE = "image"
+M.VARIABLE_FILE = "file"
+
 ---Открыть оверлей с играми
 ---@param collection number|string id или tag коллекции
 ---@param callback function функция обратного вызова по результату открытия оверлея: callback()
@@ -615,6 +691,138 @@ function M.games_collections_fetch(collection, callback)
         parameters = make_parameters_id_or_tag(collection, "Collection")
     end
     call_api("gamesCollections.fetch", { parameters }, callback)
+end
+
+---Загрузить изображение
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки изображения: callback(image)
+function M.images_upload(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("images.upload", { parameters }, callback)
+end
+
+---Загрузить изображение по URL
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки изображения: callback(image)
+function M.images_upload_url(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("images.uploadUrl", { parameters }, callback)
+end
+
+---Выбрать файл
+---@param callback function функция обратного вызова по результату выбора изображения: callback(result)
+function M.images_choice_file(callback)
+    check_callback(callback)
+    call_api("images.chooseFile", nil, callback)
+end
+
+---Получить изображения
+---@param parameters table
+---@param callback function функция обратного вызова по результату получения изображений: callback(result)
+function M.images_fetch(parameters, callback)
+    check_table(parameters, "parameters")
+    check_callback(callback)
+    call_api("images.fetch", { parameters }, callback)
+end
+
+---Получить еще изображений
+---@param parameters table
+---@param callback function функция обратного вызова по результату получения изображений: callback(result)
+function M.images_fetch_more(parameters, callback)
+    check_table(parameters, "parameters")
+    check_callback(callback)
+    call_api("images.fetchMore", { parameters }, callback)
+end
+
+---Изменить размер изображения
+---@param uri string ссылка на изображение
+---@param width number требуемая ширина изображения
+---@param height number требуемая высота изображения
+---@param crop boolean обрезка изображения
+---@return string возвращает ссылку на обрезанное изображение
+function M.images_resize(uri, width, height, crop)
+    check_string(uri, "uri")
+    check_number_value(width, "width", true)
+    check_number_value(height, "height", true)
+    check_boolean(crop, "crop", true)
+    return call_api("images.resize", { uri, width, height, crop }).value
+end
+
+---Проверить возможность загрузки изображений
+---@return boolean возможность загрузки изображений
+function M.images_can_upload()
+    return call_api("images.canUpload").value == true
+end
+
+---Загрузить файл
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки файла: callback(result)
+function M.files_upload(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.upload", { parameters }, callback)
+end
+
+---Загрузить файл по URL
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки файла: callback(result)
+function M.files_upload_url(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.uploadUrl", { parameters }, callback)
+end
+
+---Загрузить контент
+---@param parameters table
+---@param callback function функция обратного вызова по результату загрузки контента: callback(result)
+function M.files_upload_content(parameters, callback)
+    check_table_required(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.uploadContent", { parameters }, callback)
+end
+
+---Получить контент
+---@param uri string имя файла для загрузки
+---@param callback function функция обратного вызова по результату получения файла: callback(text)
+function M.files_load_content(uri, callback)
+    check_string(uri, "uri")
+    check_callback(callback)
+    call_api("files.loadContent", { uri }, callback)
+end
+
+---Выбрать файл
+---@param accept string типы файлов для выбора
+---@param callback function функция обратного вызова по результату выбора файла: callback(result)
+function M.files_choose_file(accept, callback)
+    check_string(accept, "accept", true)
+    check_callback(callback)
+    call_api("files.chooseFile", nil, callback)
+end
+
+---Получить файлы
+---@param parameters table
+---@param callback function функция обратного вызова по результату получения файлов: callback(result)
+function M.files_fetch(parameters, callback)
+    check_table(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.fetch", { parameters }, callback)
+end
+
+---Получить еще файлы
+---@param parameters table
+---@param callback function функция обратного вызова по результату получения файлов: callback(result)
+function M.files_fetch_more(parameters, callback)
+    check_table(parameters, "parameters")
+    check_callback(callback)
+    call_api("files.fetchMore", { parameters }, callback)
+end
+
+---Проверить возможность загрузки файлов
+---@return boolean возможность загрузки файлов
+function M.files_can_upload()
+    return call_api("files.canUpload").value == true
 end
 
 ---Открыть политику конфиденциальности
