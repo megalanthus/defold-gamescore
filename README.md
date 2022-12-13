@@ -4,6 +4,8 @@
 
 # GameScore for Defold
 
+# *Данное расширение больше не будет поддерживаться, переходите на расширение [GamePush](https://github.com/megalanthus/defold-gamepush)*
+
 [GameScore](https://gs.eponesh.com) расширение для движка [Defold](https://defold.com). GameScore это сервис для удобной
 публикации HTML5 игр на разных платформах с одним SDK. Сервисом поддерживается локальная отладка игры.
 
